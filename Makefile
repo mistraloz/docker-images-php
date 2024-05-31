@@ -35,6 +35,21 @@ test-8.0:  ## Test php8.0 build only
 	VERSION=8.0 VARIANT=apache $(MAKE) _test-version
 	VERSION=8.0 VARIANT=fpm $(MAKE) _test-version
 
+test-node:  ## Test node builds only
+	VERSION=8.3 VARIANT=cli NODE=12 $(MAKE) _test-node
+	VERSION=8.3 VARIANT=cli NODE=14 $(MAKE) _test-node
+	VERSION=8.3 VARIANT=cli NODE=16 $(MAKE) _test-node
+	VERSION=8.3 VARIANT=cli NODE=18 $(MAKE) _test-node
+	VERSION=8.3 VARIANT=cli NODE=20 $(MAKE) _test-node
+	VERSION=8.3 VARIANT=cli NODE=22 $(MAKE) _test-node
+
+_test-node: _test-prerequisites ## Test node for VERSION="" and VARIANT=""
+	docker buildx bake --load \
+		--set "*.platform=$(uname -p)" \
+		php$${VERSION//.}-$(VARIANT)-all
+	PHP_VERSION="$(VERSION)" BRANCH=v4 VARIANT=$(VARIANT) NODE=$(NODE) ./tests-suite/bash_unit -f tap ./tests-suite/*.sh || (notify-send -u critical "Tests failed ($(VERSION)-$(VARIANT)-node$(NODE))" && exit 1)
+	notify-send -u critical "Tests passed with success ($(VERSION)-$(VARIANT)-node$(NODE))"
+
 _test-version: _test-prerequisites ## Test php build for VERSION="" and VARIANT=""
 	docker buildx bake --load \
 		--set "*.platform=$(uname -p)" \
