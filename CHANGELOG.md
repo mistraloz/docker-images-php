@@ -69,4 +69,4 @@ The sqlite3 extension was previously enabled by default, but must now be enabled
 
 The project layout has been deeply changed. There is now only one branch for all the PHP versions.
 Each extension now has its own installation script in the `/extensions/core` directory with symlinks for the 
-extensions in the `/extensions/7.1` and `/extensions/7.2` directory based on the targeted PHP version.
+extensions in the `/extensions/8.3` and `/extensions/8.4` directory based on the targeted PHP version.

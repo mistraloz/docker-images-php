@@ -7,7 +7,12 @@
 ############################################################
 test_templateDefaultErrorReporting() {
   RESULT="$(docker run ${RUN_OPTIONS} --rm "${REPO}:${TAG_PREFIX}${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}" php -i | grep error_reporting)"
-  assert_equals "error_reporting => 32767 => 32767" "$RESULT" "Wrong default error reporting"
+  if [[ "$(printf '%s\n' "$PHP_VERSION" "8.4" | sort -V | head -n 1)" == "$PHP_VERSION" ]] && [[ "$PHP_VERSION" != "8.4" ]]; then
+    assert_equals "error_reporting => 32767 => 32767" "$RESULT" "Wrong default error reporting"
+  else
+    # From php 8.4 (included), the error_reporting changed
+    assert_equals "error_reporting => 30719 => 30719" "$RESULT" "Wrong default error reporting"
+  fi
 }
 test_templateProductionErrorReporting() {
   RESULT="$(docker run ${RUN_OPTIONS} --rm -e TEMPLATE_PHP_INI=production \
@@ -17,7 +22,12 @@ test_templateProductionErrorReporting() {
 test_templateCustomErrorReporting() {
   RESULT="$(docker run ${RUN_OPTIONS} --rm -v "${SCRIPT_DIR}/assets/php-ini/php.ini:/etc/php/${PHP_VERSION}/cli/php.ini" \
     "${REPO}:${TAG_PREFIX}${PHP_VERSION}-${BRANCH}-slim-${BRANCH_VARIANT}" php -i | grep error_reporting)"
-  assert_equals "error_reporting => 24575 => 24575" "$RESULT" "Wrong custom php.ini error reporting"
+  if [[ "$(printf '%s\n' "$PHP_VERSION" "8.4" | sort -V | head -n 1)" == "$PHP_VERSION" ]] && [[ "$PHP_VERSION" != "8.4" ]]; then
+    assert_equals "error_reporting => 24575 => 24575" "$RESULT" "Wrong custom php.ini error reporting"
+  else
+    # From php 8.4 (included), the error_reporting changed
+    assert_equals "error_reporting => 22527 => 22527" "$RESULT" "Wrong custom php.ini error reporting"
+  fi
 }
 ############################################################
 ## PHP_INI_*
