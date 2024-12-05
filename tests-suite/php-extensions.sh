@@ -27,14 +27,10 @@ test_presenceOfUploadprogressOnFat() {
 ###################################################################
 ## Let's check that FFI is enabled explicitly with fat for PHP 7.4+
 ###################################################################
-if [[ "${PHP_VERSION}" == "7.2" || "${PHP_VERSION}" == "7.3" ]]; then
-  echo "-- FFI is only available for PHP 7.4+"
-else
-  test_presenceOfFFIOnFat() {
-    RESULT=$(docker run ${RUN_OPTIONS} -e "PHP_EXTENSIONS=ffi" --rm "${REPO}:${TAG_PREFIX}${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}" php -m | tail -n +1 | grep --color=never FFI)
-    assert_equals "FFI" "${RESULT}" "Missing php-FFI"
-  }
-fi
+test_presenceOfFFIOnFat() {
+  RESULT=$(docker run ${RUN_OPTIONS} -e "PHP_EXTENSIONS=ffi" --rm "${REPO}:${TAG_PREFIX}${PHP_VERSION}-${BRANCH}-${BRANCH_VARIANT}" php -m | tail -n +1 | grep --color=never FFI)
+  assert_equals "FFI" "${RESULT}" "Missing php-FFI"
+}
 ############################################################
 ## Let's check that the extensions are enabled when composer is run
 ############################################################
