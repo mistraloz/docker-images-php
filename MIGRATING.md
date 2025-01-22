@@ -1,3 +1,14 @@
+# Migrating from v4 to v5 images
+
+FIXME : review the changes 
+
+This version is an intermediate one to wait the v6 who expected many more changes (but we wait for it too long time). 
+v5 is mostly fully compatible with v4, the main issue that may happen are related to the OS version (for the most case, that is not relevant)
+
+Important changes:
+- v4 images are based on **Ubuntu 20.04**. v5 images are based on **Ubuntu 24.04**.
+- Removing of all unsupported version (not maintenance/security support : that is still possible to use the old tags/force manually the rebuild)
+
 # Migrating from v3 to v4 images
 
 Important changes:

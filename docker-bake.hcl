@@ -7,8 +7,6 @@ group "default" {
      "php83",
      "php82",
      "php81",
-     "php80",
-     "php74",
    ]
 }
 
@@ -16,126 +14,84 @@ group "php84-apache-all" {
    targets = [
      "php84-slim-apache",
      "php84-apache",
-     "php84-apache-node22","php84-apache-node20","php84-apache-node18","php84-apache-node16","php84-apache-node14","php84-apache-node12","php84-apache-node10",
+     "php84-apache-node22","php84-apache-node20","php84-apache-node18",
    ]
 }
 group "php84-fpm-all" {
    targets = [
      "php84-slim-fpm",
      "php84-fpm",
-     "php84-fpm-node22","php84-fpm-node20","php84-fpm-node18","php84-fpm-node16","php84-fpm-node14","php84-fpm-node12","php84-fpm-node10",
+     "php84-fpm-node22","php84-fpm-node20","php84-fpm-node18",
    ]
 }
 group "php84-cli-all" {
    targets = [
      "php84-slim-cli",
      "php84-cli",
-     "php84-cli-node22","php84-cli-node20","php84-cli-node18","php84-cli-node16","php84-cli-node14","php84-cli-node12","php84-cli-node10",
+     "php84-cli-node22","php84-cli-node20","php84-cli-node18",
    ]
 }
 group "php83-apache-all" {
    targets = [
      "php83-slim-apache",
      "php83-apache",
-     "php83-apache-node22","php83-apache-node20","php83-apache-node18","php83-apache-node16","php83-apache-node14","php83-apache-node12","php83-apache-node10",
+     "php83-apache-node22","php83-apache-node20","php83-apache-node18",
    ]
 }
 group "php83-fpm-all" {
    targets = [
      "php83-slim-fpm",
      "php83-fpm",
-     "php83-fpm-node22","php83-fpm-node20","php83-fpm-node18","php83-fpm-node16","php83-fpm-node14","php83-fpm-node12","php83-fpm-node10",
+     "php83-fpm-node22","php83-fpm-node20","php83-fpm-node18",
    ]
 }
 group "php83-cli-all" {
    targets = [
      "php83-slim-cli",
      "php83-cli",
-     "php83-cli-node22","php83-cli-node20","php83-cli-node18","php83-cli-node16","php83-cli-node14","php83-cli-node12","php83-cli-node10",
+     "php83-cli-node22","php83-cli-node20","php83-cli-node18",
    ]
 }
 group "php82-apache-all" {
    targets = [
      "php82-slim-apache",
      "php82-apache",
-     "php82-apache-node22","php82-apache-node20","php82-apache-node18","php82-apache-node16","php82-apache-node14","php82-apache-node12","php82-apache-node10",
+     "php82-apache-node22","php82-apache-node20","php82-apache-node18",
    ]
 }
 group "php82-fpm-all" {
    targets = [
      "php82-slim-fpm",
      "php82-fpm",
-     "php82-fpm-node22","php82-fpm-node20","php82-fpm-node18","php82-fpm-node16","php82-fpm-node14","php82-fpm-node12","php82-fpm-node10",
+     "php82-fpm-node22","php82-fpm-node20","php82-fpm-node18",
    ]
 }
 group "php82-cli-all" {
    targets = [
      "php82-slim-cli",
      "php82-cli",
-     "php82-cli-node22","php82-cli-node20","php82-cli-node18","php82-cli-node16","php82-cli-node14","php82-cli-node12","php82-cli-node10",
+     "php82-cli-node22","php82-cli-node20","php82-cli-node18",
    ]
 }
 group "php81-apache-all" {
    targets = [
      "php81-slim-apache",
      "php81-apache",
-     "php81-apache-node22","php81-apache-node20","php81-apache-node18","php81-apache-node16","php81-apache-node14","php81-apache-node12","php81-apache-node10",
+     "php81-apache-node22","php81-apache-node20","php81-apache-node18",
    ]
 }
 group "php81-fpm-all" {
    targets = [
      "php81-slim-fpm",
      "php81-fpm",
-     "php81-fpm-node22","php81-fpm-node20","php81-fpm-node18","php81-fpm-node16","php81-fpm-node14","php81-fpm-node12","php81-fpm-node10",
+     "php81-fpm-node22","php81-fpm-node20","php81-fpm-node18",
    ]
 }
 group "php81-cli-all" {
    targets = [
      "php81-slim-cli",
      "php81-cli",
-     "php81-cli-node22","php81-cli-node20","php81-cli-node18","php81-cli-node16","php81-cli-node14","php81-cli-node12","php81-cli-node10",
-   ]
-}
-group "php80-apache-all" {
-   targets = [
-     "php80-slim-apache",
-     "php80-apache",
-     "php80-apache-node22","php80-apache-node20","php80-apache-node18","php80-apache-node16","php80-apache-node14","php80-apache-node12","php80-apache-node10",
-   ]
-}
-group "php80-fpm-all" {
-   targets = [
-     "php80-slim-fpm",
-     "php80-fpm",
-     "php80-fpm-node22","php80-fpm-node20","php80-fpm-node18","php80-fpm-node16","php80-fpm-node14","php80-fpm-node12","php80-fpm-node10",
-   ]
-}
-group "php80-cli-all" {
-   targets = [
-     "php80-slim-cli",
-     "php80-cli",
-     "php80-cli-node22","php80-cli-node20","php80-cli-node18","php80-cli-node16","php80-cli-node14","php80-cli-node12","php80-cli-node10",
-   ]
-}
-group "php74-apache-all" {
-   targets = [
-     "php74-slim-apache",
-     "php74-apache",
-     "php74-apache-node22","php74-apache-node20","php74-apache-node18","php74-apache-node16","php74-apache-node14","php74-apache-node12","php74-apache-node10",
-   ]
-}
-group "php74-fpm-all" {
-   targets = [
-     "php74-slim-fpm",
-     "php74-fpm",
-     "php74-fpm-node22","php74-fpm-node20","php74-fpm-node18","php74-fpm-node16","php74-fpm-node14","php74-fpm-node12","php74-fpm-node10",
-   ]
-}
-group "php74-cli-all" {
-   targets = [
-     "php74-slim-cli",
-     "php74-cli",
-     "php74-cli-node22","php74-cli-node20","php74-cli-node18","php74-cli-node16","php74-cli-node14","php74-cli-node12","php74-cli-node10",
+     "php81-cli-node22","php81-cli-node20","php81-cli-node18",
    ]
 }
 
@@ -152,18 +108,12 @@ group "php82" {
 group "php81" {
    targets = ["php81-apache-all","php81-fpm-all","php81-cli-all",]
 }
-group "php80" {
-   targets = ["php80-apache-all","php80-fpm-all","php80-cli-all",]
-}
-group "php74" {
-   targets = ["php74-apache-all","php74-fpm-all","php74-cli-all",]
-}
 
 variable "REPO" {default = "thecodingmachine/php"}
 variable "TAG_PREFIX" {default = ""}
 variable "PHP_PATCH_MINOR" {default = ""}
 variable "IS_RELEASE" {default = "0"}
-variable "GLOBAL_VERSION" {default = "v4"}
+variable "GLOBAL_VERSION" {default = "v5"}
 
 function "tag" {
     params = [PHP_VERSION, VARIANT]
@@ -189,7 +139,7 @@ target "default" {
 ###########################
 ##    PHP 8.4
 ###########################
-# thecodingmachine/php:8.4-v4-slim-apache
+# thecodingmachine/php:8.4-v5-slim-apache
 target "php84-slim-apache" {
   inherits = ["default"]
   tags = tag("8.4", "slim-apache")
@@ -200,7 +150,7 @@ target "php84-slim-apache" {
   }
 }
 
-# thecodingmachine/php:8.4-v4-apache
+# thecodingmachine/php:8.4-v5-apache
 target "php84-apache" {
   inherits = ["default"]
   tags = tag("8.4", "apache")
@@ -215,7 +165,7 @@ target "php84-apache" {
   }
 }
 
-# thecodingmachine/php:8.4-v4-apache-node22
+# thecodingmachine/php:8.4-v5-apache-node22
 target "php84-apache-node22" {
   inherits = ["default"]
   tags = tag("8.4", "apache-node22")
@@ -231,7 +181,7 @@ target "php84-apache-node22" {
   }
 }
 
-# thecodingmachine/php:8.4-v4-apache-node20
+# thecodingmachine/php:8.4-v5-apache-node20
 target "php84-apache-node20" {
   inherits = ["default"]
   tags = tag("8.4", "apache-node20")
@@ -247,7 +197,7 @@ target "php84-apache-node20" {
   }
 }
 
-# thecodingmachine/php:8.4-v4-apache-node18
+# thecodingmachine/php:8.4-v5-apache-node18
 target "php84-apache-node18" {
   inherits = ["default"]
   tags = tag("8.4", "apache-node18")
@@ -263,74 +213,10 @@ target "php84-apache-node18" {
   }
 }
 
-# thecodingmachine/php:8.4-v4-apache-node16
-target "php84-apache-node16" {
-  inherits = ["default"]
-  tags = tag("8.4", "apache-node16")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "8.4"
-    VARIANT = "apache-node16"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "16"
-  }
-  contexts = {
-    fat = "target:php84-apache"
-  }
-}
-
-# thecodingmachine/php:8.4-v4-apache-node14
-target "php84-apache-node14" {
-  inherits = ["default"]
-  tags = tag("8.4", "apache-node14")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "8.4"
-    VARIANT = "apache-node14"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "14"
-  }
-  contexts = {
-    fat = "target:php84-apache"
-  }
-}
-
-# thecodingmachine/php:8.4-v4-apache-node12
-target "php84-apache-node12" {
-  inherits = ["default"]
-  tags = tag("8.4", "apache-node12")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "8.4"
-    VARIANT = "apache-node12"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "12"
-  }
-  contexts = {
-    fat = "target:php84-apache"
-  }
-}
-
-# thecodingmachine/php:8.4-v4-apache-node10
-target "php84-apache-node10" {
-  inherits = ["default"]
-  tags = tag("8.4", "apache-node10")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "8.4"
-    VARIANT = "apache-node10"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "10"
-  }
-  contexts = {
-    fat = "target:php84-apache"
-  }
-}
-
 ###########################
 ##    PHP 8.4
 ###########################
-# thecodingmachine/php:8.4-v4-slim-fpm
+# thecodingmachine/php:8.4-v5-slim-fpm
 target "php84-slim-fpm" {
   inherits = ["default"]
   tags = tag("8.4", "slim-fpm")
@@ -341,7 +227,7 @@ target "php84-slim-fpm" {
   }
 }
 
-# thecodingmachine/php:8.4-v4-fpm
+# thecodingmachine/php:8.4-v5-fpm
 target "php84-fpm" {
   inherits = ["default"]
   tags = tag("8.4", "fpm")
@@ -356,7 +242,7 @@ target "php84-fpm" {
   }
 }
 
-# thecodingmachine/php:8.4-v4-fpm-node22
+# thecodingmachine/php:8.4-v5-fpm-node22
 target "php84-fpm-node22" {
   inherits = ["default"]
   tags = tag("8.4", "fpm-node22")
@@ -372,7 +258,7 @@ target "php84-fpm-node22" {
   }
 }
 
-# thecodingmachine/php:8.4-v4-fpm-node20
+# thecodingmachine/php:8.4-v5-fpm-node20
 target "php84-fpm-node20" {
   inherits = ["default"]
   tags = tag("8.4", "fpm-node20")
@@ -388,7 +274,7 @@ target "php84-fpm-node20" {
   }
 }
 
-# thecodingmachine/php:8.4-v4-fpm-node18
+# thecodingmachine/php:8.4-v5-fpm-node18
 target "php84-fpm-node18" {
   inherits = ["default"]
   tags = tag("8.4", "fpm-node18")
@@ -404,74 +290,10 @@ target "php84-fpm-node18" {
   }
 }
 
-# thecodingmachine/php:8.4-v4-fpm-node16
-target "php84-fpm-node16" {
-  inherits = ["default"]
-  tags = tag("8.4", "fpm-node16")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "8.4"
-    VARIANT = "fpm-node16"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "16"
-  }
-  contexts = {
-    fat = "target:php84-fpm"
-  }
-}
-
-# thecodingmachine/php:8.4-v4-fpm-node14
-target "php84-fpm-node14" {
-  inherits = ["default"]
-  tags = tag("8.4", "fpm-node14")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "8.4"
-    VARIANT = "fpm-node14"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "14"
-  }
-  contexts = {
-    fat = "target:php84-fpm"
-  }
-}
-
-# thecodingmachine/php:8.4-v4-fpm-node12
-target "php84-fpm-node12" {
-  inherits = ["default"]
-  tags = tag("8.4", "fpm-node12")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "8.4"
-    VARIANT = "fpm-node12"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "12"
-  }
-  contexts = {
-    fat = "target:php84-fpm"
-  }
-}
-
-# thecodingmachine/php:8.4-v4-fpm-node10
-target "php84-fpm-node10" {
-  inherits = ["default"]
-  tags = tag("8.4", "fpm-node10")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "8.4"
-    VARIANT = "fpm-node10"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "10"
-  }
-  contexts = {
-    fat = "target:php84-fpm"
-  }
-}
-
 ###########################
 ##    PHP 8.4
 ###########################
-# thecodingmachine/php:8.4-v4-slim-cli
+# thecodingmachine/php:8.4-v5-slim-cli
 target "php84-slim-cli" {
   inherits = ["default"]
   tags = tag("8.4", "slim-cli")
@@ -482,7 +304,7 @@ target "php84-slim-cli" {
   }
 }
 
-# thecodingmachine/php:8.4-v4-cli
+# thecodingmachine/php:8.4-v5-cli
 target "php84-cli" {
   inherits = ["default"]
   tags = tag("8.4", "cli")
@@ -497,7 +319,7 @@ target "php84-cli" {
   }
 }
 
-# thecodingmachine/php:8.4-v4-cli-node22
+# thecodingmachine/php:8.4-v5-cli-node22
 target "php84-cli-node22" {
   inherits = ["default"]
   tags = tag("8.4", "cli-node22")
@@ -513,7 +335,7 @@ target "php84-cli-node22" {
   }
 }
 
-# thecodingmachine/php:8.4-v4-cli-node20
+# thecodingmachine/php:8.4-v5-cli-node20
 target "php84-cli-node20" {
   inherits = ["default"]
   tags = tag("8.4", "cli-node20")
@@ -529,7 +351,7 @@ target "php84-cli-node20" {
   }
 }
 
-# thecodingmachine/php:8.4-v4-cli-node18
+# thecodingmachine/php:8.4-v5-cli-node18
 target "php84-cli-node18" {
   inherits = ["default"]
   tags = tag("8.4", "cli-node18")
@@ -545,74 +367,10 @@ target "php84-cli-node18" {
   }
 }
 
-# thecodingmachine/php:8.4-v4-cli-node16
-target "php84-cli-node16" {
-  inherits = ["default"]
-  tags = tag("8.4", "cli-node16")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "8.4"
-    VARIANT = "cli-node16"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "16"
-  }
-  contexts = {
-    fat = "target:php84-cli"
-  }
-}
-
-# thecodingmachine/php:8.4-v4-cli-node14
-target "php84-cli-node14" {
-  inherits = ["default"]
-  tags = tag("8.4", "cli-node14")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "8.4"
-    VARIANT = "cli-node14"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "14"
-  }
-  contexts = {
-    fat = "target:php84-cli"
-  }
-}
-
-# thecodingmachine/php:8.4-v4-cli-node12
-target "php84-cli-node12" {
-  inherits = ["default"]
-  tags = tag("8.4", "cli-node12")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "8.4"
-    VARIANT = "cli-node12"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "12"
-  }
-  contexts = {
-    fat = "target:php84-cli"
-  }
-}
-
-# thecodingmachine/php:8.4-v4-cli-node10
-target "php84-cli-node10" {
-  inherits = ["default"]
-  tags = tag("8.4", "cli-node10")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "8.4"
-    VARIANT = "cli-node10"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "10"
-  }
-  contexts = {
-    fat = "target:php84-cli"
-  }
-}
-
 ###########################
 ##    PHP 8.3
 ###########################
-# thecodingmachine/php:8.3-v4-slim-apache
+# thecodingmachine/php:8.3-v5-slim-apache
 target "php83-slim-apache" {
   inherits = ["default"]
   tags = tag("8.3", "slim-apache")
@@ -623,7 +381,7 @@ target "php83-slim-apache" {
   }
 }
 
-# thecodingmachine/php:8.3-v4-apache
+# thecodingmachine/php:8.3-v5-apache
 target "php83-apache" {
   inherits = ["default"]
   tags = tag("8.3", "apache")
@@ -638,7 +396,7 @@ target "php83-apache" {
   }
 }
 
-# thecodingmachine/php:8.3-v4-apache-node22
+# thecodingmachine/php:8.3-v5-apache-node22
 target "php83-apache-node22" {
   inherits = ["default"]
   tags = tag("8.3", "apache-node22")
@@ -654,7 +412,7 @@ target "php83-apache-node22" {
   }
 }
 
-# thecodingmachine/php:8.3-v4-apache-node20
+# thecodingmachine/php:8.3-v5-apache-node20
 target "php83-apache-node20" {
   inherits = ["default"]
   tags = tag("8.3", "apache-node20")
@@ -670,7 +428,7 @@ target "php83-apache-node20" {
   }
 }
 
-# thecodingmachine/php:8.3-v4-apache-node18
+# thecodingmachine/php:8.3-v5-apache-node18
 target "php83-apache-node18" {
   inherits = ["default"]
   tags = tag("8.3", "apache-node18")
@@ -686,74 +444,10 @@ target "php83-apache-node18" {
   }
 }
 
-# thecodingmachine/php:8.3-v4-apache-node16
-target "php83-apache-node16" {
-  inherits = ["default"]
-  tags = tag("8.3", "apache-node16")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "8.3"
-    VARIANT = "apache-node16"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "16"
-  }
-  contexts = {
-    fat = "target:php83-apache"
-  }
-}
-
-# thecodingmachine/php:8.3-v4-apache-node14
-target "php83-apache-node14" {
-  inherits = ["default"]
-  tags = tag("8.3", "apache-node14")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "8.3"
-    VARIANT = "apache-node14"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "14"
-  }
-  contexts = {
-    fat = "target:php83-apache"
-  }
-}
-
-# thecodingmachine/php:8.3-v4-apache-node12
-target "php83-apache-node12" {
-  inherits = ["default"]
-  tags = tag("8.3", "apache-node12")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "8.3"
-    VARIANT = "apache-node12"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "12"
-  }
-  contexts = {
-    fat = "target:php83-apache"
-  }
-}
-
-# thecodingmachine/php:8.3-v4-apache-node10
-target "php83-apache-node10" {
-  inherits = ["default"]
-  tags = tag("8.3", "apache-node10")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "8.3"
-    VARIANT = "apache-node10"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "10"
-  }
-  contexts = {
-    fat = "target:php83-apache"
-  }
-}
-
 ###########################
 ##    PHP 8.3
 ###########################
-# thecodingmachine/php:8.3-v4-slim-fpm
+# thecodingmachine/php:8.3-v5-slim-fpm
 target "php83-slim-fpm" {
   inherits = ["default"]
   tags = tag("8.3", "slim-fpm")
@@ -764,7 +458,7 @@ target "php83-slim-fpm" {
   }
 }
 
-# thecodingmachine/php:8.3-v4-fpm
+# thecodingmachine/php:8.3-v5-fpm
 target "php83-fpm" {
   inherits = ["default"]
   tags = tag("8.3", "fpm")
@@ -779,7 +473,7 @@ target "php83-fpm" {
   }
 }
 
-# thecodingmachine/php:8.3-v4-fpm-node22
+# thecodingmachine/php:8.3-v5-fpm-node22
 target "php83-fpm-node22" {
   inherits = ["default"]
   tags = tag("8.3", "fpm-node22")
@@ -795,7 +489,7 @@ target "php83-fpm-node22" {
   }
 }
 
-# thecodingmachine/php:8.3-v4-fpm-node20
+# thecodingmachine/php:8.3-v5-fpm-node20
 target "php83-fpm-node20" {
   inherits = ["default"]
   tags = tag("8.3", "fpm-node20")
@@ -811,7 +505,7 @@ target "php83-fpm-node20" {
   }
 }
 
-# thecodingmachine/php:8.3-v4-fpm-node18
+# thecodingmachine/php:8.3-v5-fpm-node18
 target "php83-fpm-node18" {
   inherits = ["default"]
   tags = tag("8.3", "fpm-node18")
@@ -827,74 +521,10 @@ target "php83-fpm-node18" {
   }
 }
 
-# thecodingmachine/php:8.3-v4-fpm-node16
-target "php83-fpm-node16" {
-  inherits = ["default"]
-  tags = tag("8.3", "fpm-node16")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "8.3"
-    VARIANT = "fpm-node16"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "16"
-  }
-  contexts = {
-    fat = "target:php83-fpm"
-  }
-}
-
-# thecodingmachine/php:8.3-v4-fpm-node14
-target "php83-fpm-node14" {
-  inherits = ["default"]
-  tags = tag("8.3", "fpm-node14")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "8.3"
-    VARIANT = "fpm-node14"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "14"
-  }
-  contexts = {
-    fat = "target:php83-fpm"
-  }
-}
-
-# thecodingmachine/php:8.3-v4-fpm-node12
-target "php83-fpm-node12" {
-  inherits = ["default"]
-  tags = tag("8.3", "fpm-node12")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "8.3"
-    VARIANT = "fpm-node12"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "12"
-  }
-  contexts = {
-    fat = "target:php83-fpm"
-  }
-}
-
-# thecodingmachine/php:8.3-v4-fpm-node10
-target "php83-fpm-node10" {
-  inherits = ["default"]
-  tags = tag("8.3", "fpm-node10")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "8.3"
-    VARIANT = "fpm-node10"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "10"
-  }
-  contexts = {
-    fat = "target:php83-fpm"
-  }
-}
-
 ###########################
 ##    PHP 8.3
 ###########################
-# thecodingmachine/php:8.3-v4-slim-cli
+# thecodingmachine/php:8.3-v5-slim-cli
 target "php83-slim-cli" {
   inherits = ["default"]
   tags = tag("8.3", "slim-cli")
@@ -905,7 +535,7 @@ target "php83-slim-cli" {
   }
 }
 
-# thecodingmachine/php:8.3-v4-cli
+# thecodingmachine/php:8.3-v5-cli
 target "php83-cli" {
   inherits = ["default"]
   tags = tag("8.3", "cli")
@@ -920,7 +550,7 @@ target "php83-cli" {
   }
 }
 
-# thecodingmachine/php:8.3-v4-cli-node22
+# thecodingmachine/php:8.3-v5-cli-node22
 target "php83-cli-node22" {
   inherits = ["default"]
   tags = tag("8.3", "cli-node22")
@@ -936,7 +566,7 @@ target "php83-cli-node22" {
   }
 }
 
-# thecodingmachine/php:8.3-v4-cli-node20
+# thecodingmachine/php:8.3-v5-cli-node20
 target "php83-cli-node20" {
   inherits = ["default"]
   tags = tag("8.3", "cli-node20")
@@ -952,7 +582,7 @@ target "php83-cli-node20" {
   }
 }
 
-# thecodingmachine/php:8.3-v4-cli-node18
+# thecodingmachine/php:8.3-v5-cli-node18
 target "php83-cli-node18" {
   inherits = ["default"]
   tags = tag("8.3", "cli-node18")
@@ -968,74 +598,10 @@ target "php83-cli-node18" {
   }
 }
 
-# thecodingmachine/php:8.3-v4-cli-node16
-target "php83-cli-node16" {
-  inherits = ["default"]
-  tags = tag("8.3", "cli-node16")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "8.3"
-    VARIANT = "cli-node16"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "16"
-  }
-  contexts = {
-    fat = "target:php83-cli"
-  }
-}
-
-# thecodingmachine/php:8.3-v4-cli-node14
-target "php83-cli-node14" {
-  inherits = ["default"]
-  tags = tag("8.3", "cli-node14")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "8.3"
-    VARIANT = "cli-node14"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "14"
-  }
-  contexts = {
-    fat = "target:php83-cli"
-  }
-}
-
-# thecodingmachine/php:8.3-v4-cli-node12
-target "php83-cli-node12" {
-  inherits = ["default"]
-  tags = tag("8.3", "cli-node12")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "8.3"
-    VARIANT = "cli-node12"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "12"
-  }
-  contexts = {
-    fat = "target:php83-cli"
-  }
-}
-
-# thecodingmachine/php:8.3-v4-cli-node10
-target "php83-cli-node10" {
-  inherits = ["default"]
-  tags = tag("8.3", "cli-node10")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "8.3"
-    VARIANT = "cli-node10"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "10"
-  }
-  contexts = {
-    fat = "target:php83-cli"
-  }
-}
-
 ###########################
 ##    PHP 8.2
 ###########################
-# thecodingmachine/php:8.2-v4-slim-apache
+# thecodingmachine/php:8.2-v5-slim-apache
 target "php82-slim-apache" {
   inherits = ["default"]
   tags = tag("8.2", "slim-apache")
@@ -1046,7 +612,7 @@ target "php82-slim-apache" {
   }
 }
 
-# thecodingmachine/php:8.2-v4-apache
+# thecodingmachine/php:8.2-v5-apache
 target "php82-apache" {
   inherits = ["default"]
   tags = tag("8.2", "apache")
@@ -1061,7 +627,7 @@ target "php82-apache" {
   }
 }
 
-# thecodingmachine/php:8.2-v4-apache-node22
+# thecodingmachine/php:8.2-v5-apache-node22
 target "php82-apache-node22" {
   inherits = ["default"]
   tags = tag("8.2", "apache-node22")
@@ -1077,7 +643,7 @@ target "php82-apache-node22" {
   }
 }
 
-# thecodingmachine/php:8.2-v4-apache-node20
+# thecodingmachine/php:8.2-v5-apache-node20
 target "php82-apache-node20" {
   inherits = ["default"]
   tags = tag("8.2", "apache-node20")
@@ -1093,7 +659,7 @@ target "php82-apache-node20" {
   }
 }
 
-# thecodingmachine/php:8.2-v4-apache-node18
+# thecodingmachine/php:8.2-v5-apache-node18
 target "php82-apache-node18" {
   inherits = ["default"]
   tags = tag("8.2", "apache-node18")
@@ -1109,74 +675,10 @@ target "php82-apache-node18" {
   }
 }
 
-# thecodingmachine/php:8.2-v4-apache-node16
-target "php82-apache-node16" {
-  inherits = ["default"]
-  tags = tag("8.2", "apache-node16")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "8.2"
-    VARIANT = "apache-node16"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "16"
-  }
-  contexts = {
-    fat = "target:php82-apache"
-  }
-}
-
-# thecodingmachine/php:8.2-v4-apache-node14
-target "php82-apache-node14" {
-  inherits = ["default"]
-  tags = tag("8.2", "apache-node14")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "8.2"
-    VARIANT = "apache-node14"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "14"
-  }
-  contexts = {
-    fat = "target:php82-apache"
-  }
-}
-
-# thecodingmachine/php:8.2-v4-apache-node12
-target "php82-apache-node12" {
-  inherits = ["default"]
-  tags = tag("8.2", "apache-node12")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "8.2"
-    VARIANT = "apache-node12"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "12"
-  }
-  contexts = {
-    fat = "target:php82-apache"
-  }
-}
-
-# thecodingmachine/php:8.2-v4-apache-node10
-target "php82-apache-node10" {
-  inherits = ["default"]
-  tags = tag("8.2", "apache-node10")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "8.2"
-    VARIANT = "apache-node10"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "10"
-  }
-  contexts = {
-    fat = "target:php82-apache"
-  }
-}
-
 ###########################
 ##    PHP 8.2
 ###########################
-# thecodingmachine/php:8.2-v4-slim-fpm
+# thecodingmachine/php:8.2-v5-slim-fpm
 target "php82-slim-fpm" {
   inherits = ["default"]
   tags = tag("8.2", "slim-fpm")
@@ -1187,7 +689,7 @@ target "php82-slim-fpm" {
   }
 }
 
-# thecodingmachine/php:8.2-v4-fpm
+# thecodingmachine/php:8.2-v5-fpm
 target "php82-fpm" {
   inherits = ["default"]
   tags = tag("8.2", "fpm")
@@ -1202,7 +704,7 @@ target "php82-fpm" {
   }
 }
 
-# thecodingmachine/php:8.2-v4-fpm-node22
+# thecodingmachine/php:8.2-v5-fpm-node22
 target "php82-fpm-node22" {
   inherits = ["default"]
   tags = tag("8.2", "fpm-node22")
@@ -1218,7 +720,7 @@ target "php82-fpm-node22" {
   }
 }
 
-# thecodingmachine/php:8.2-v4-fpm-node20
+# thecodingmachine/php:8.2-v5-fpm-node20
 target "php82-fpm-node20" {
   inherits = ["default"]
   tags = tag("8.2", "fpm-node20")
@@ -1234,7 +736,7 @@ target "php82-fpm-node20" {
   }
 }
 
-# thecodingmachine/php:8.2-v4-fpm-node18
+# thecodingmachine/php:8.2-v5-fpm-node18
 target "php82-fpm-node18" {
   inherits = ["default"]
   tags = tag("8.2", "fpm-node18")
@@ -1250,74 +752,10 @@ target "php82-fpm-node18" {
   }
 }
 
-# thecodingmachine/php:8.2-v4-fpm-node16
-target "php82-fpm-node16" {
-  inherits = ["default"]
-  tags = tag("8.2", "fpm-node16")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "8.2"
-    VARIANT = "fpm-node16"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "16"
-  }
-  contexts = {
-    fat = "target:php82-fpm"
-  }
-}
-
-# thecodingmachine/php:8.2-v4-fpm-node14
-target "php82-fpm-node14" {
-  inherits = ["default"]
-  tags = tag("8.2", "fpm-node14")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "8.2"
-    VARIANT = "fpm-node14"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "14"
-  }
-  contexts = {
-    fat = "target:php82-fpm"
-  }
-}
-
-# thecodingmachine/php:8.2-v4-fpm-node12
-target "php82-fpm-node12" {
-  inherits = ["default"]
-  tags = tag("8.2", "fpm-node12")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "8.2"
-    VARIANT = "fpm-node12"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "12"
-  }
-  contexts = {
-    fat = "target:php82-fpm"
-  }
-}
-
-# thecodingmachine/php:8.2-v4-fpm-node10
-target "php82-fpm-node10" {
-  inherits = ["default"]
-  tags = tag("8.2", "fpm-node10")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "8.2"
-    VARIANT = "fpm-node10"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "10"
-  }
-  contexts = {
-    fat = "target:php82-fpm"
-  }
-}
-
 ###########################
 ##    PHP 8.2
 ###########################
-# thecodingmachine/php:8.2-v4-slim-cli
+# thecodingmachine/php:8.2-v5-slim-cli
 target "php82-slim-cli" {
   inherits = ["default"]
   tags = tag("8.2", "slim-cli")
@@ -1328,7 +766,7 @@ target "php82-slim-cli" {
   }
 }
 
-# thecodingmachine/php:8.2-v4-cli
+# thecodingmachine/php:8.2-v5-cli
 target "php82-cli" {
   inherits = ["default"]
   tags = tag("8.2", "cli")
@@ -1343,7 +781,7 @@ target "php82-cli" {
   }
 }
 
-# thecodingmachine/php:8.2-v4-cli-node22
+# thecodingmachine/php:8.2-v5-cli-node22
 target "php82-cli-node22" {
   inherits = ["default"]
   tags = tag("8.2", "cli-node22")
@@ -1359,7 +797,7 @@ target "php82-cli-node22" {
   }
 }
 
-# thecodingmachine/php:8.2-v4-cli-node20
+# thecodingmachine/php:8.2-v5-cli-node20
 target "php82-cli-node20" {
   inherits = ["default"]
   tags = tag("8.2", "cli-node20")
@@ -1375,7 +813,7 @@ target "php82-cli-node20" {
   }
 }
 
-# thecodingmachine/php:8.2-v4-cli-node18
+# thecodingmachine/php:8.2-v5-cli-node18
 target "php82-cli-node18" {
   inherits = ["default"]
   tags = tag("8.2", "cli-node18")
@@ -1391,74 +829,10 @@ target "php82-cli-node18" {
   }
 }
 
-# thecodingmachine/php:8.2-v4-cli-node16
-target "php82-cli-node16" {
-  inherits = ["default"]
-  tags = tag("8.2", "cli-node16")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "8.2"
-    VARIANT = "cli-node16"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "16"
-  }
-  contexts = {
-    fat = "target:php82-cli"
-  }
-}
-
-# thecodingmachine/php:8.2-v4-cli-node14
-target "php82-cli-node14" {
-  inherits = ["default"]
-  tags = tag("8.2", "cli-node14")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "8.2"
-    VARIANT = "cli-node14"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "14"
-  }
-  contexts = {
-    fat = "target:php82-cli"
-  }
-}
-
-# thecodingmachine/php:8.2-v4-cli-node12
-target "php82-cli-node12" {
-  inherits = ["default"]
-  tags = tag("8.2", "cli-node12")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "8.2"
-    VARIANT = "cli-node12"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "12"
-  }
-  contexts = {
-    fat = "target:php82-cli"
-  }
-}
-
-# thecodingmachine/php:8.2-v4-cli-node10
-target "php82-cli-node10" {
-  inherits = ["default"]
-  tags = tag("8.2", "cli-node10")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "8.2"
-    VARIANT = "cli-node10"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "10"
-  }
-  contexts = {
-    fat = "target:php82-cli"
-  }
-}
-
 ###########################
 ##    PHP 8.1
 ###########################
-# thecodingmachine/php:8.1-v4-slim-apache
+# thecodingmachine/php:8.1-v5-slim-apache
 target "php81-slim-apache" {
   inherits = ["default"]
   tags = tag("8.1", "slim-apache")
@@ -1469,7 +843,7 @@ target "php81-slim-apache" {
   }
 }
 
-# thecodingmachine/php:8.1-v4-apache
+# thecodingmachine/php:8.1-v5-apache
 target "php81-apache" {
   inherits = ["default"]
   tags = tag("8.1", "apache")
@@ -1484,7 +858,7 @@ target "php81-apache" {
   }
 }
 
-# thecodingmachine/php:8.1-v4-apache-node22
+# thecodingmachine/php:8.1-v5-apache-node22
 target "php81-apache-node22" {
   inherits = ["default"]
   tags = tag("8.1", "apache-node22")
@@ -1500,7 +874,7 @@ target "php81-apache-node22" {
   }
 }
 
-# thecodingmachine/php:8.1-v4-apache-node20
+# thecodingmachine/php:8.1-v5-apache-node20
 target "php81-apache-node20" {
   inherits = ["default"]
   tags = tag("8.1", "apache-node20")
@@ -1516,7 +890,7 @@ target "php81-apache-node20" {
   }
 }
 
-# thecodingmachine/php:8.1-v4-apache-node18
+# thecodingmachine/php:8.1-v5-apache-node18
 target "php81-apache-node18" {
   inherits = ["default"]
   tags = tag("8.1", "apache-node18")
@@ -1532,74 +906,10 @@ target "php81-apache-node18" {
   }
 }
 
-# thecodingmachine/php:8.1-v4-apache-node16
-target "php81-apache-node16" {
-  inherits = ["default"]
-  tags = tag("8.1", "apache-node16")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "8.1"
-    VARIANT = "apache-node16"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "16"
-  }
-  contexts = {
-    fat = "target:php81-apache"
-  }
-}
-
-# thecodingmachine/php:8.1-v4-apache-node14
-target "php81-apache-node14" {
-  inherits = ["default"]
-  tags = tag("8.1", "apache-node14")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "8.1"
-    VARIANT = "apache-node14"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "14"
-  }
-  contexts = {
-    fat = "target:php81-apache"
-  }
-}
-
-# thecodingmachine/php:8.1-v4-apache-node12
-target "php81-apache-node12" {
-  inherits = ["default"]
-  tags = tag("8.1", "apache-node12")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "8.1"
-    VARIANT = "apache-node12"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "12"
-  }
-  contexts = {
-    fat = "target:php81-apache"
-  }
-}
-
-# thecodingmachine/php:8.1-v4-apache-node10
-target "php81-apache-node10" {
-  inherits = ["default"]
-  tags = tag("8.1", "apache-node10")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "8.1"
-    VARIANT = "apache-node10"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "10"
-  }
-  contexts = {
-    fat = "target:php81-apache"
-  }
-}
-
 ###########################
 ##    PHP 8.1
 ###########################
-# thecodingmachine/php:8.1-v4-slim-fpm
+# thecodingmachine/php:8.1-v5-slim-fpm
 target "php81-slim-fpm" {
   inherits = ["default"]
   tags = tag("8.1", "slim-fpm")
@@ -1610,7 +920,7 @@ target "php81-slim-fpm" {
   }
 }
 
-# thecodingmachine/php:8.1-v4-fpm
+# thecodingmachine/php:8.1-v5-fpm
 target "php81-fpm" {
   inherits = ["default"]
   tags = tag("8.1", "fpm")
@@ -1625,7 +935,7 @@ target "php81-fpm" {
   }
 }
 
-# thecodingmachine/php:8.1-v4-fpm-node22
+# thecodingmachine/php:8.1-v5-fpm-node22
 target "php81-fpm-node22" {
   inherits = ["default"]
   tags = tag("8.1", "fpm-node22")
@@ -1641,7 +951,7 @@ target "php81-fpm-node22" {
   }
 }
 
-# thecodingmachine/php:8.1-v4-fpm-node20
+# thecodingmachine/php:8.1-v5-fpm-node20
 target "php81-fpm-node20" {
   inherits = ["default"]
   tags = tag("8.1", "fpm-node20")
@@ -1657,7 +967,7 @@ target "php81-fpm-node20" {
   }
 }
 
-# thecodingmachine/php:8.1-v4-fpm-node18
+# thecodingmachine/php:8.1-v5-fpm-node18
 target "php81-fpm-node18" {
   inherits = ["default"]
   tags = tag("8.1", "fpm-node18")
@@ -1673,74 +983,10 @@ target "php81-fpm-node18" {
   }
 }
 
-# thecodingmachine/php:8.1-v4-fpm-node16
-target "php81-fpm-node16" {
-  inherits = ["default"]
-  tags = tag("8.1", "fpm-node16")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "8.1"
-    VARIANT = "fpm-node16"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "16"
-  }
-  contexts = {
-    fat = "target:php81-fpm"
-  }
-}
-
-# thecodingmachine/php:8.1-v4-fpm-node14
-target "php81-fpm-node14" {
-  inherits = ["default"]
-  tags = tag("8.1", "fpm-node14")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "8.1"
-    VARIANT = "fpm-node14"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "14"
-  }
-  contexts = {
-    fat = "target:php81-fpm"
-  }
-}
-
-# thecodingmachine/php:8.1-v4-fpm-node12
-target "php81-fpm-node12" {
-  inherits = ["default"]
-  tags = tag("8.1", "fpm-node12")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "8.1"
-    VARIANT = "fpm-node12"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "12"
-  }
-  contexts = {
-    fat = "target:php81-fpm"
-  }
-}
-
-# thecodingmachine/php:8.1-v4-fpm-node10
-target "php81-fpm-node10" {
-  inherits = ["default"]
-  tags = tag("8.1", "fpm-node10")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "8.1"
-    VARIANT = "fpm-node10"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "10"
-  }
-  contexts = {
-    fat = "target:php81-fpm"
-  }
-}
-
 ###########################
 ##    PHP 8.1
 ###########################
-# thecodingmachine/php:8.1-v4-slim-cli
+# thecodingmachine/php:8.1-v5-slim-cli
 target "php81-slim-cli" {
   inherits = ["default"]
   tags = tag("8.1", "slim-cli")
@@ -1751,7 +997,7 @@ target "php81-slim-cli" {
   }
 }
 
-# thecodingmachine/php:8.1-v4-cli
+# thecodingmachine/php:8.1-v5-cli
 target "php81-cli" {
   inherits = ["default"]
   tags = tag("8.1", "cli")
@@ -1766,7 +1012,7 @@ target "php81-cli" {
   }
 }
 
-# thecodingmachine/php:8.1-v4-cli-node22
+# thecodingmachine/php:8.1-v5-cli-node22
 target "php81-cli-node22" {
   inherits = ["default"]
   tags = tag("8.1", "cli-node22")
@@ -1782,7 +1028,7 @@ target "php81-cli-node22" {
   }
 }
 
-# thecodingmachine/php:8.1-v4-cli-node20
+# thecodingmachine/php:8.1-v5-cli-node20
 target "php81-cli-node20" {
   inherits = ["default"]
   tags = tag("8.1", "cli-node20")
@@ -1798,7 +1044,7 @@ target "php81-cli-node20" {
   }
 }
 
-# thecodingmachine/php:8.1-v4-cli-node18
+# thecodingmachine/php:8.1-v5-cli-node18
 target "php81-cli-node18" {
   inherits = ["default"]
   tags = tag("8.1", "cli-node18")
@@ -1811,916 +1057,6 @@ target "php81-cli-node18" {
   }
   contexts = {
     fat = "target:php81-cli"
-  }
-}
-
-# thecodingmachine/php:8.1-v4-cli-node16
-target "php81-cli-node16" {
-  inherits = ["default"]
-  tags = tag("8.1", "cli-node16")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "8.1"
-    VARIANT = "cli-node16"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "16"
-  }
-  contexts = {
-    fat = "target:php81-cli"
-  }
-}
-
-# thecodingmachine/php:8.1-v4-cli-node14
-target "php81-cli-node14" {
-  inherits = ["default"]
-  tags = tag("8.1", "cli-node14")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "8.1"
-    VARIANT = "cli-node14"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "14"
-  }
-  contexts = {
-    fat = "target:php81-cli"
-  }
-}
-
-# thecodingmachine/php:8.1-v4-cli-node12
-target "php81-cli-node12" {
-  inherits = ["default"]
-  tags = tag("8.1", "cli-node12")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "8.1"
-    VARIANT = "cli-node12"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "12"
-  }
-  contexts = {
-    fat = "target:php81-cli"
-  }
-}
-
-# thecodingmachine/php:8.1-v4-cli-node10
-target "php81-cli-node10" {
-  inherits = ["default"]
-  tags = tag("8.1", "cli-node10")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "8.1"
-    VARIANT = "cli-node10"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "10"
-  }
-  contexts = {
-    fat = "target:php81-cli"
-  }
-}
-
-###########################
-##    PHP 8.0
-###########################
-# thecodingmachine/php:8.0-v4-slim-apache
-target "php80-slim-apache" {
-  inherits = ["default"]
-  tags = tag("8.0", "slim-apache")
-  dockerfile = "Dockerfile.slim.apache"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "apache"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-apache
-target "php80-apache" {
-  inherits = ["default"]
-  tags = tag("8.0", "apache")
-  dockerfile = "Dockerfile.apache"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "apache"
-    FROM_IMAGE = "slim"
-  }
-  contexts = {
-    slim = "target:php80-slim-apache"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-apache-node22
-target "php80-apache-node22" {
-  inherits = ["default"]
-  tags = tag("8.0", "apache-node22")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "apache-node22"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "22"
-  }
-  contexts = {
-    fat = "target:php80-apache"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-apache-node20
-target "php80-apache-node20" {
-  inherits = ["default"]
-  tags = tag("8.0", "apache-node20")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "apache-node20"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "20"
-  }
-  contexts = {
-    fat = "target:php80-apache"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-apache-node18
-target "php80-apache-node18" {
-  inherits = ["default"]
-  tags = tag("8.0", "apache-node18")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "apache-node18"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "18"
-  }
-  contexts = {
-    fat = "target:php80-apache"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-apache-node16
-target "php80-apache-node16" {
-  inherits = ["default"]
-  tags = tag("8.0", "apache-node16")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "apache-node16"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "16"
-  }
-  contexts = {
-    fat = "target:php80-apache"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-apache-node14
-target "php80-apache-node14" {
-  inherits = ["default"]
-  tags = tag("8.0", "apache-node14")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "apache-node14"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "14"
-  }
-  contexts = {
-    fat = "target:php80-apache"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-apache-node12
-target "php80-apache-node12" {
-  inherits = ["default"]
-  tags = tag("8.0", "apache-node12")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "apache-node12"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "12"
-  }
-  contexts = {
-    fat = "target:php80-apache"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-apache-node10
-target "php80-apache-node10" {
-  inherits = ["default"]
-  tags = tag("8.0", "apache-node10")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "apache-node10"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "10"
-  }
-  contexts = {
-    fat = "target:php80-apache"
-  }
-}
-
-###########################
-##    PHP 8.0
-###########################
-# thecodingmachine/php:8.0-v4-slim-fpm
-target "php80-slim-fpm" {
-  inherits = ["default"]
-  tags = tag("8.0", "slim-fpm")
-  dockerfile = "Dockerfile.slim.fpm"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "fpm"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-fpm
-target "php80-fpm" {
-  inherits = ["default"]
-  tags = tag("8.0", "fpm")
-  dockerfile = "Dockerfile.fpm"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "fpm"
-    FROM_IMAGE = "slim"
-  }
-  contexts = {
-    slim = "target:php80-slim-fpm"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-fpm-node22
-target "php80-fpm-node22" {
-  inherits = ["default"]
-  tags = tag("8.0", "fpm-node22")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "fpm-node22"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "22"
-  }
-  contexts = {
-    fat = "target:php80-fpm"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-fpm-node20
-target "php80-fpm-node20" {
-  inherits = ["default"]
-  tags = tag("8.0", "fpm-node20")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "fpm-node20"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "20"
-  }
-  contexts = {
-    fat = "target:php80-fpm"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-fpm-node18
-target "php80-fpm-node18" {
-  inherits = ["default"]
-  tags = tag("8.0", "fpm-node18")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "fpm-node18"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "18"
-  }
-  contexts = {
-    fat = "target:php80-fpm"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-fpm-node16
-target "php80-fpm-node16" {
-  inherits = ["default"]
-  tags = tag("8.0", "fpm-node16")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "fpm-node16"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "16"
-  }
-  contexts = {
-    fat = "target:php80-fpm"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-fpm-node14
-target "php80-fpm-node14" {
-  inherits = ["default"]
-  tags = tag("8.0", "fpm-node14")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "fpm-node14"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "14"
-  }
-  contexts = {
-    fat = "target:php80-fpm"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-fpm-node12
-target "php80-fpm-node12" {
-  inherits = ["default"]
-  tags = tag("8.0", "fpm-node12")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "fpm-node12"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "12"
-  }
-  contexts = {
-    fat = "target:php80-fpm"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-fpm-node10
-target "php80-fpm-node10" {
-  inherits = ["default"]
-  tags = tag("8.0", "fpm-node10")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "fpm-node10"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "10"
-  }
-  contexts = {
-    fat = "target:php80-fpm"
-  }
-}
-
-###########################
-##    PHP 8.0
-###########################
-# thecodingmachine/php:8.0-v4-slim-cli
-target "php80-slim-cli" {
-  inherits = ["default"]
-  tags = tag("8.0", "slim-cli")
-  dockerfile = "Dockerfile.slim.cli"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "cli"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-cli
-target "php80-cli" {
-  inherits = ["default"]
-  tags = tag("8.0", "cli")
-  dockerfile = "Dockerfile.cli"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "cli"
-    FROM_IMAGE = "slim"
-  }
-  contexts = {
-    slim = "target:php80-slim-cli"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-cli-node22
-target "php80-cli-node22" {
-  inherits = ["default"]
-  tags = tag("8.0", "cli-node22")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "cli-node22"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "22"
-  }
-  contexts = {
-    fat = "target:php80-cli"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-cli-node20
-target "php80-cli-node20" {
-  inherits = ["default"]
-  tags = tag("8.0", "cli-node20")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "cli-node20"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "20"
-  }
-  contexts = {
-    fat = "target:php80-cli"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-cli-node18
-target "php80-cli-node18" {
-  inherits = ["default"]
-  tags = tag("8.0", "cli-node18")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "cli-node18"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "18"
-  }
-  contexts = {
-    fat = "target:php80-cli"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-cli-node16
-target "php80-cli-node16" {
-  inherits = ["default"]
-  tags = tag("8.0", "cli-node16")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "cli-node16"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "16"
-  }
-  contexts = {
-    fat = "target:php80-cli"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-cli-node14
-target "php80-cli-node14" {
-  inherits = ["default"]
-  tags = tag("8.0", "cli-node14")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "cli-node14"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "14"
-  }
-  contexts = {
-    fat = "target:php80-cli"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-cli-node12
-target "php80-cli-node12" {
-  inherits = ["default"]
-  tags = tag("8.0", "cli-node12")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "cli-node12"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "12"
-  }
-  contexts = {
-    fat = "target:php80-cli"
-  }
-}
-
-# thecodingmachine/php:8.0-v4-cli-node10
-target "php80-cli-node10" {
-  inherits = ["default"]
-  tags = tag("8.0", "cli-node10")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "8.0"
-    VARIANT = "cli-node10"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "10"
-  }
-  contexts = {
-    fat = "target:php80-cli"
-  }
-}
-
-###########################
-##    PHP 7.4
-###########################
-# thecodingmachine/php:7.4-v4-slim-apache
-target "php74-slim-apache" {
-  inherits = ["default"]
-  tags = tag("7.4", "slim-apache")
-  dockerfile = "Dockerfile.slim.apache"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "apache"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-apache
-target "php74-apache" {
-  inherits = ["default"]
-  tags = tag("7.4", "apache")
-  dockerfile = "Dockerfile.apache"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "apache"
-    FROM_IMAGE = "slim"
-  }
-  contexts = {
-    slim = "target:php74-slim-apache"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-apache-node22
-target "php74-apache-node22" {
-  inherits = ["default"]
-  tags = tag("7.4", "apache-node22")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "apache-node22"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "22"
-  }
-  contexts = {
-    fat = "target:php74-apache"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-apache-node20
-target "php74-apache-node20" {
-  inherits = ["default"]
-  tags = tag("7.4", "apache-node20")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "apache-node20"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "20"
-  }
-  contexts = {
-    fat = "target:php74-apache"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-apache-node18
-target "php74-apache-node18" {
-  inherits = ["default"]
-  tags = tag("7.4", "apache-node18")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "apache-node18"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "18"
-  }
-  contexts = {
-    fat = "target:php74-apache"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-apache-node16
-target "php74-apache-node16" {
-  inherits = ["default"]
-  tags = tag("7.4", "apache-node16")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "apache-node16"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "16"
-  }
-  contexts = {
-    fat = "target:php74-apache"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-apache-node14
-target "php74-apache-node14" {
-  inherits = ["default"]
-  tags = tag("7.4", "apache-node14")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "apache-node14"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "14"
-  }
-  contexts = {
-    fat = "target:php74-apache"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-apache-node12
-target "php74-apache-node12" {
-  inherits = ["default"]
-  tags = tag("7.4", "apache-node12")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "apache-node12"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "12"
-  }
-  contexts = {
-    fat = "target:php74-apache"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-apache-node10
-target "php74-apache-node10" {
-  inherits = ["default"]
-  tags = tag("7.4", "apache-node10")
-  dockerfile = "Dockerfile.apache.node"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "apache-node10"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "10"
-  }
-  contexts = {
-    fat = "target:php74-apache"
-  }
-}
-
-###########################
-##    PHP 7.4
-###########################
-# thecodingmachine/php:7.4-v4-slim-fpm
-target "php74-slim-fpm" {
-  inherits = ["default"]
-  tags = tag("7.4", "slim-fpm")
-  dockerfile = "Dockerfile.slim.fpm"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "fpm"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-fpm
-target "php74-fpm" {
-  inherits = ["default"]
-  tags = tag("7.4", "fpm")
-  dockerfile = "Dockerfile.fpm"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "fpm"
-    FROM_IMAGE = "slim"
-  }
-  contexts = {
-    slim = "target:php74-slim-fpm"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-fpm-node22
-target "php74-fpm-node22" {
-  inherits = ["default"]
-  tags = tag("7.4", "fpm-node22")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "fpm-node22"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "22"
-  }
-  contexts = {
-    fat = "target:php74-fpm"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-fpm-node20
-target "php74-fpm-node20" {
-  inherits = ["default"]
-  tags = tag("7.4", "fpm-node20")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "fpm-node20"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "20"
-  }
-  contexts = {
-    fat = "target:php74-fpm"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-fpm-node18
-target "php74-fpm-node18" {
-  inherits = ["default"]
-  tags = tag("7.4", "fpm-node18")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "fpm-node18"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "18"
-  }
-  contexts = {
-    fat = "target:php74-fpm"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-fpm-node16
-target "php74-fpm-node16" {
-  inherits = ["default"]
-  tags = tag("7.4", "fpm-node16")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "fpm-node16"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "16"
-  }
-  contexts = {
-    fat = "target:php74-fpm"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-fpm-node14
-target "php74-fpm-node14" {
-  inherits = ["default"]
-  tags = tag("7.4", "fpm-node14")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "fpm-node14"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "14"
-  }
-  contexts = {
-    fat = "target:php74-fpm"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-fpm-node12
-target "php74-fpm-node12" {
-  inherits = ["default"]
-  tags = tag("7.4", "fpm-node12")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "fpm-node12"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "12"
-  }
-  contexts = {
-    fat = "target:php74-fpm"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-fpm-node10
-target "php74-fpm-node10" {
-  inherits = ["default"]
-  tags = tag("7.4", "fpm-node10")
-  dockerfile = "Dockerfile.fpm.node"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "fpm-node10"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "10"
-  }
-  contexts = {
-    fat = "target:php74-fpm"
-  }
-}
-
-###########################
-##    PHP 7.4
-###########################
-# thecodingmachine/php:7.4-v4-slim-cli
-target "php74-slim-cli" {
-  inherits = ["default"]
-  tags = tag("7.4", "slim-cli")
-  dockerfile = "Dockerfile.slim.cli"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "cli"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-cli
-target "php74-cli" {
-  inherits = ["default"]
-  tags = tag("7.4", "cli")
-  dockerfile = "Dockerfile.cli"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "cli"
-    FROM_IMAGE = "slim"
-  }
-  contexts = {
-    slim = "target:php74-slim-cli"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-cli-node22
-target "php74-cli-node22" {
-  inherits = ["default"]
-  tags = tag("7.4", "cli-node22")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "cli-node22"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "22"
-  }
-  contexts = {
-    fat = "target:php74-cli"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-cli-node20
-target "php74-cli-node20" {
-  inherits = ["default"]
-  tags = tag("7.4", "cli-node20")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "cli-node20"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "20"
-  }
-  contexts = {
-    fat = "target:php74-cli"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-cli-node18
-target "php74-cli-node18" {
-  inherits = ["default"]
-  tags = tag("7.4", "cli-node18")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "cli-node18"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "18"
-  }
-  contexts = {
-    fat = "target:php74-cli"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-cli-node16
-target "php74-cli-node16" {
-  inherits = ["default"]
-  tags = tag("7.4", "cli-node16")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "cli-node16"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "16"
-  }
-  contexts = {
-    fat = "target:php74-cli"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-cli-node14
-target "php74-cli-node14" {
-  inherits = ["default"]
-  tags = tag("7.4", "cli-node14")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "cli-node14"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "14"
-  }
-  contexts = {
-    fat = "target:php74-cli"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-cli-node12
-target "php74-cli-node12" {
-  inherits = ["default"]
-  tags = tag("7.4", "cli-node12")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "cli-node12"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "12"
-  }
-  contexts = {
-    fat = "target:php74-cli"
-  }
-}
-
-# thecodingmachine/php:7.4-v4-cli-node10
-target "php74-cli-node10" {
-  inherits = ["default"]
-  tags = tag("7.4", "cli-node10")
-  dockerfile = "Dockerfile.cli.node"
-  args = {
-    PHP_VERSION = "7.4"
-    VARIANT = "cli-node10"
-    FROM_IMAGE = "fat"
-    NODE_VERSION = "10"
-  }
-  contexts = {
-    fat = "target:php74-cli"
   }
 }
 

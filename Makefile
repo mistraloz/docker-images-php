@@ -46,22 +46,49 @@ _test-node: _test-prerequisites ## Test node for VERSION="" and VARIANT=""
 	docker buildx bake --load \
 		--set "*.platform=$(uname -p)" \
 		php$${VERSION//.}-$(VARIANT)-all
-	PHP_VERSION="$(VERSION)" BRANCH=v4 VARIANT=$(VARIANT) NODE=$(NODE) ./tests-suite/bash_unit -f tap ./tests-suite/*.sh || (notify-send -u critical "Tests failed ($(VERSION)-$(VARIANT)-node$(NODE))" && exit 1)
+	PHP_VERSION="$(VERSION)" BRANCH=v5 VARIANT=$(VARIANT) NODE=$(NODE) ./tests-suite/bash_unit -f tap ./tests-suite/*.sh || (notify-send -u critical "Tests failed ($(VERSION)-$(VARIANT)-node$(NODE))" && exit 1)
 	notify-send -u critical "Tests passed with success ($(VERSION)-$(VARIANT)-node$(NODE))"
 
 _test-version: _test-prerequisites ## Test php build for VERSION="" and VARIANT=""
 	docker buildx bake --load \
 		--set "*.platform=$(uname -p)" \
 		php$${VERSION//.}-$(VARIANT)-all
-	PHP_VERSION="$(VERSION)" BRANCH=v4 VARIANT=$(VARIANT) ./tests-suite/bash_unit -f tap ./tests-suite/*.sh || (notify-send -u critical "Tests failed ($(VERSION)-$(VARIANT))" && exit 1)
+	PHP_VERSION="$(VERSION)" BRANCH=v5 VARIANT=$(VARIANT) ./tests-suite/bash_unit -f tap ./tests-suite/*.sh || (notify-send -u critical "Tests failed ($(VERSION)-$(VARIANT))" && exit 1)
 	notify-send -u critical "Tests passed with success ($(VERSION)-$(VARIANT))"
 
 _test-version-quick: _test-prerequisites ## Test php build for VERSION="" and VARIANT="" (without node variants)
 	docker buildx bake --load \
 		--set "*.platform=$(uname -p)" \
 		php$${VERSION//.}-slim-$(VARIANT) php$${VERSION//.}-$(VARIANT)
-	PHP_VERSION="$(VERSION)" BRANCH=v4 VARIANT=$(VARIANT) ./tests-suite/bash_unit -f tap ./tests-suite/*.sh || (notify-send -u critical "Tests failed ($(VERSION)-$(VARIANT))" && exit 1)
+	PHP_VERSION="$(VERSION)" BRANCH=v5 VARIANT=$(VARIANT) ./tests-suite/bash_unit -f tap ./tests-suite/*.sh || (notify-send -u critical "Tests failed ($(VERSION)-$(VARIANT))" && exit 1)
 	notify-send -u critical "Tests passed with success ($(VERSION)-$(VARIANT)) - without node-*"
 
 clean: ## Clean dangles image after build
 	rm -rf /tmp/buildx-cache
+
+
+test-manual-build:
+	docker build \
+		--build-arg PHP_VERSION="8.4" \
+		--build-arg VARIANT="cli" \
+		--build-arg GLOBAL_VERSION="v5" \
+		--file ./Dockerfile.slim.cli \
+		--tag testv5-slim \
+		.
+	docker --debug build \
+		--build-arg PHP_VERSION="8.4" \
+		--build-arg VARIANT="cli" \
+		--build-arg GLOBAL_VERSION="v5" \
+		--build-arg FROM_IMAGE="testv5-slim" \
+		--file ./Dockerfile.cli \
+		--tag testv5 \
+		.
+#		--target=base \
+
+test-manual-exec:
+	docker run --rm -it testv5 bash
+
+
+testtt:
+	PHP_EXTENSION_SWOOLE=1 php -m | grep -i swoole
+	PHP_EXTENSION_GETTEXT=1 php -m | grep -i gettext

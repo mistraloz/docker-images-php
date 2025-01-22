@@ -3,7 +3,7 @@
 set -ex
 
 if [ -n "$DEV_DEPENDENCIES" ] || [ -n "$DEPENDENCIES" ]; then
-    apt-get install -y --no-install-recommends $DEV_DEPENDENCIES $DEPENDENCIES
+    apt install -y --no-install-recommends $DEV_DEPENDENCIES $DEPENDENCIES
 fi
 
 if [ -n "$CONFIGURE_OPTIONS" ]; then
@@ -15,10 +15,10 @@ if [ -n "$EXTENSION" ]; then
   PACKAGE_NAME=${PACKAGE_NAME:-$EXTENSION}
   if apt-cache search --names-only "php${PHP_VERSION}-$PACKAGE_NAME" | grep "php${PHP_VERSION}-$PACKAGE_NAME"; then
     set -e
-    apt-get install -y --no-install-recommends php${PHP_VERSION}-$PACKAGE_NAME
+    apt install -y --no-install-recommends php${PHP_VERSION}-$PACKAGE_NAME
   else
     set -e
-    apt-get install -y --no-install-recommends php-$PACKAGE_NAME
+    apt install -y --no-install-recommends php-$PACKAGE_NAME
   fi
 
 fi
@@ -31,7 +31,7 @@ if [ -n "$PECL_EXTENSION" ]; then
       echo "pickle found"
       which pickle
     else
-      apt-get install -y --no-install-recommends build-essential php-pear php${PHP_VERSION}-dev pkg-config
+      apt install -y --no-install-recommends build-essential php-pear php${PHP_VERSION}-dev pkg-config
       curl https://github.com/FriendsOfPHP/pickle/releases/latest/download/pickle.phar -L -o /usr/local/bin/pickle
       chmod +x /usr/local/bin/pickle
     fi
@@ -49,7 +49,7 @@ if [ -n "$PECL_EXTENSION" ]; then
 fi
 
 if [ -n "$DEV_DEPENDENCIES" ]; then
-    apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $DEV_DEPENDENCIES
+    apt purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $DEV_DEPENDENCIES
 fi
 
 if [ -n "$EXTENSION" ]; then
