@@ -1,0 +1,156 @@
+version: '3.8'
+
+services:
+  app:
+    image: thecodingmachine/php:8.2-v4-apache
+    container_name: laravel-app
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    volumes:
+      - ./app:/var/www/html
+    environment:
+      # Apache configuration
+      APACHE_DOCUMENT_ROOT: /var/www/html/public
+
+      # Enable required PHP extensions
+      PHP_EXTENSION_PGSQL: 0
+      PHP_EXTENSION_PDO_MYSQL: 1
+      PHP_EXTENSION_REDIS: 1
+      PHP_EXTENSION_GD: 1
+      PHP_EXTENSION_INTL: 1
+
+      # PHP configuration
+      PHP_INI_MEMORY_LIMIT: 256M
+      PHP_INI_UPLOAD_MAX_FILESIZE: 50M
+      PHP_INI_POST_MAX_SIZE: 50M
+      PHP_INI_MAX_EXECUTION_TIME: 300
+
+      # Laravel environment
+      APP_ENV: local
+      APP_DEBUG: "true"
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: laravel
+      DB_USERNAME: laravel
+      DB_PASSWORD: secret
+
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+
+      # File permissions
+      DOCKER_USER_UID: 1000
+      DOCKER_USER_GID: 1000
+
+      # Run migrations on startup
+      STARTUP_COMMAND_1: "php artisan migrate --force"
+      STARTUP_COMMAND_2: "php artisan config:cache"
+    depends_on:
+      - db
+      - redis
+    networks:
+      - laravel
+
+  db:
+    image: mysql:8.0
+    container_name: laravel-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: rootsecret
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - laravel
+
+  redis:
+    image: redis:7-alpine
+    container_name: laravel-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    networks:
+      - laravel
+
+  queue:
+    image: thecodingmachine/php:8.2-v4-cli
+    container_name: laravel-queue
+    restart: unless-stopped
+    volumes:
+      - ./app:/var/www/html
+    working_dir: /var/www/html
+    command: php artisan queue:work --tries=3
+    environment:
+      # Enable required PHP extensions
+      PHP_EXTENSION_PDO_MYSQL: 1
+      PHP_EXTENSION_REDIS: 1
+
+      # Laravel environment
+      APP_ENV: local
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: laravel
+      DB_USERNAME: laravel
+      DB_PASSWORD: secret
+
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+
+      # File permissions
+      DOCKER_USER_UID: 1000
+      DOCKER_USER_GID: 1000
+    depends_on:
+      - db
+      - redis
+    networks:
+      - laravel
+
+  scheduler:
+    image: thecodingmachine/php:8.2-v4-cli
+    container_name: laravel-scheduler
+    restart: unless-stopped
+    volumes:
+      - ./app:/var/www/html
+    working_dir: /var/www/html
+    environment:
+      # Enable required PHP extensions
+      PHP_EXTENSION_PDO_MYSQL: 1
+      PHP_EXTENSION_REDIS: 1
+
+      # Laravel environment
+      APP_ENV: local
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: laravel
+      DB_USERNAME: laravel
+      DB_PASSWORD: secret
+
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+
+      # File permissions
+      DOCKER_USER_UID: 1000
+      DOCKER_USER_GID: 1000
+
+      # Cron job for Laravel scheduler
+      CRON_SCHEDULE_1: "* * * * *"
+      CRON_COMMAND_1: "php /var/www/html/artisan schedule:run >> /dev/null 2>&1"
+    depends_on:
+      - db
+      - redis
+    networks:
+      - laravel
+
+networks:
+  laravel:
+    driver: bridge
+
+volumes:
+  db_data:
