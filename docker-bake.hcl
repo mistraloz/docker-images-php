@@ -287,17 +287,18 @@ variable "IS_RELEASE" {default = "0"}
 variable "GLOBAL_VERSION" {default = "v5"}
 variable "ARCH_SUFFIX" {default = ""}
 
-# Cache of the layers between the runs of a pull request ("gha": GitHub Actions cache), none by default
+# Cache of the layers between the runs ("gha": GitHub Actions cache), none by default. CACHE_KEY ends the cache scopes
 variable "CACHE" {default = ""}
+variable "CACHE_KEY" {default = ""}
 
 function "cache_from" {
     params = [NAME]
-    result = equal("", CACHE) ? [] : ["type=${CACHE},scope=${NAME}${ARCH_SUFFIX}"]
+    result = equal("", CACHE) ? [] : ["type=${CACHE},scope=${NAME}${ARCH_SUFFIX}${CACHE_KEY}"]
 }
 
 function "cache_to" {
     params = [NAME]
-    result = equal("", CACHE) ? [] : ["type=${CACHE},scope=${NAME}${ARCH_SUFFIX},mode=max,ignore-error=true"]
+    result = equal("", CACHE) ? [] : ["type=${CACHE},scope=${NAME}${ARCH_SUFFIX}${CACHE_KEY},mode=max,ignore-error=true"]
 }
 
 function "tag" {
