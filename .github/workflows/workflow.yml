@@ -10,11 +10,6 @@ on:
   schedule:
     - cron: '42 3 * * 0'
   workflow_dispatch:
-    inputs:
-      no_cache:
-        description: 'Build without the layers cached by the previous runs'
-        type: boolean
-        default: false
 
 jobs:
   build:
@@ -37,15 +32,13 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
       - name: Expose the GitHub Actions cache to the builder
-        if: ${{ !inputs.no_cache }}
+        if: ${{ github.event_name == 'pull_request' }}
         uses: crazy-max/ghaction-github-runtime@v3
       - name: Build
         run: |
           PHP_VERSION="${{ matrix.php_version }}"
-          # The cached layers are reused for at most 48 hours by a pull request, 4 hours by the other runs
-          CACHE_HOURS="${{ github.event_name == 'pull_request' && 48 || 4 }}"
-          CACHE="${{ !inputs.no_cache && 'gha' || '' }}" \
-          CACHE_KEY="-${{ github.event_name == 'pull_request' && 'pr' || 'v5' }}-$(( $(date +%s) / (CACHE_HOURS * 3600) ))" \
+          # The images published are built without cache, a pull request reuses the layers of its previous runs
+          CACHE="${{ github.event_name == 'pull_request' && 'gha' || '' }}" \
           REPO="ghcr.io/${{ github.repository_owner }}/php" \
           ARCH_SUFFIX="-${{ matrix.builder.arch }}" \
           TAG_PREFIX="rc${GITHUB_RUN_ID}-" \
