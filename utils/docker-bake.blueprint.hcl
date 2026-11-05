@@ -34,17 +34,19 @@ variable "IS_RELEASE" {default = "0"}
 variable "GLOBAL_VERSION" {default = "v5"}
 variable "ARCH_SUFFIX" {default = ""}
 
-# Cache of the layers between the runs of a pull request ("gha": GitHub Actions cache), none by default
-variable "CACHE" {default = ""}
+# Registry of the cache of the layers between the runs (e.g. ghcr.io/thecodingmachine/php-cache), none by default.
+# The cache is only read, unless CACHE_WRITE=1
+variable "CACHE_REPO" {default = ""}
+variable "CACHE_WRITE" {default = "0"}
 
 function "cache_from" {
     params = [NAME]
-    result = equal("", CACHE) ? [] : ["type=${CACHE},scope=${NAME}${ARCH_SUFFIX}"]
+    result = equal("", CACHE_REPO) ? [] : ["type=registry,ref=${CACHE_REPO}:${NAME}${ARCH_SUFFIX}"]
 }
 
 function "cache_to" {
     params = [NAME]
-    result = equal("", CACHE) ? [] : ["type=${CACHE},scope=${NAME}${ARCH_SUFFIX},mode=max,ignore-error=true"]
+    result = equal("", CACHE_REPO) || !equal("1", CACHE_WRITE) ? [] : ["type=registry,ref=${CACHE_REPO}:${NAME}${ARCH_SUFFIX},mode=max,image-manifest=true,oci-mediatypes=true,ignore-error=true"]
 }
 
 function "tag" {
