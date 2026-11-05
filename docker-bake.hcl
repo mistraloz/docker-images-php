@@ -287,6 +287,19 @@ variable "IS_RELEASE" {default = "0"}
 variable "GLOBAL_VERSION" {default = "v5"}
 variable "ARCH_SUFFIX" {default = ""}
 
+# Cache of the layers between the runs of a pull request ("gha": GitHub Actions cache), none by default
+variable "CACHE" {default = ""}
+
+function "cache_from" {
+    params = [NAME]
+    result = equal("", CACHE) ? [] : ["type=${CACHE},scope=${NAME}${ARCH_SUFFIX}"]
+}
+
+function "cache_to" {
+    params = [NAME]
+    result = equal("", CACHE) ? [] : ["type=${CACHE},scope=${NAME}${ARCH_SUFFIX},mode=max,ignore-error=true"]
+}
+
 function "tag" {
     params = [PHP_VERSION, VARIANT]
     result = [
@@ -314,6 +327,8 @@ target "default" {
 # Layers shared by the images of all the variants (not published)
 target "php85-base" {
   inherits = ["default"]
+  cache-from = cache_from("php85-base")
+  cache-to = cache_to("php85-base")
   dockerfile = "Dockerfile.base"
   output = ["type=cacheonly"]
   args = {
@@ -323,6 +338,8 @@ target "php85-base" {
 
 target "php85-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php85-extensions")
+  cache-to = cache_to("php85-extensions")
   dockerfile = "Dockerfile.extensions"
   output = ["type=cacheonly"]
   contexts = {
@@ -333,6 +350,8 @@ target "php85-extensions" {
 # thecodingmachine/php:8.5-v5-slim-apache
 target "php85-slim-apache" {
   inherits = ["default"]
+  cache-from = cache_from("php85-slim-apache")
+  cache-to = cache_to("php85-slim-apache")
   tags = tag("8.5", "slim-apache")
   dockerfile = "Dockerfile.slim.apache"
   args = {
@@ -346,6 +365,8 @@ target "php85-slim-apache" {
 # The slim image of the variant with the extensions (not published)
 target "php85-slim-apache-with-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php85-slim-apache-with-extensions")
+  cache-to = cache_to("php85-slim-apache-with-extensions")
   dockerfile = "Dockerfile.slim.apache"
   args = {
     VARIANT = "apache"
@@ -359,6 +380,8 @@ target "php85-slim-apache-with-extensions" {
 # thecodingmachine/php:8.5-v5-apache
 target "php85-apache" {
   inherits = ["default"]
+  cache-from = cache_from("php85-apache")
+  cache-to = cache_to("php85-apache")
   tags = tag("8.5", "apache")
   dockerfile = "Dockerfile.apache"
   args = {
@@ -372,6 +395,8 @@ target "php85-apache" {
 # thecodingmachine/php:8.5-v5-apache-node26
 target "php85-apache-node26" {
   inherits = ["default"]
+  cache-from = cache_from("php85-apache-node26")
+  cache-to = cache_to("php85-apache-node26")
   tags = tag("8.5", "apache-node26")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -388,6 +413,8 @@ target "php85-apache-node26" {
 # thecodingmachine/php:8.5-v5-apache-node24
 target "php85-apache-node24" {
   inherits = ["default"]
+  cache-from = cache_from("php85-apache-node24")
+  cache-to = cache_to("php85-apache-node24")
   tags = tag("8.5", "apache-node24")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -404,6 +431,8 @@ target "php85-apache-node24" {
 # thecodingmachine/php:8.5-v5-apache-node22
 target "php85-apache-node22" {
   inherits = ["default"]
+  cache-from = cache_from("php85-apache-node22")
+  cache-to = cache_to("php85-apache-node22")
   tags = tag("8.5", "apache-node22")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -420,6 +449,8 @@ target "php85-apache-node22" {
 # thecodingmachine/php:8.5-v5-apache-node20
 target "php85-apache-node20" {
   inherits = ["default"]
+  cache-from = cache_from("php85-apache-node20")
+  cache-to = cache_to("php85-apache-node20")
   tags = tag("8.5", "apache-node20")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -436,6 +467,8 @@ target "php85-apache-node20" {
 # thecodingmachine/php:8.5-v5-apache-node18
 target "php85-apache-node18" {
   inherits = ["default"]
+  cache-from = cache_from("php85-apache-node18")
+  cache-to = cache_to("php85-apache-node18")
   tags = tag("8.5", "apache-node18")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -452,6 +485,8 @@ target "php85-apache-node18" {
 # thecodingmachine/php:8.5-v5-slim-fpm
 target "php85-slim-fpm" {
   inherits = ["default"]
+  cache-from = cache_from("php85-slim-fpm")
+  cache-to = cache_to("php85-slim-fpm")
   tags = tag("8.5", "slim-fpm")
   dockerfile = "Dockerfile.slim.fpm"
   args = {
@@ -465,6 +500,8 @@ target "php85-slim-fpm" {
 # The slim image of the variant with the extensions (not published)
 target "php85-slim-fpm-with-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php85-slim-fpm-with-extensions")
+  cache-to = cache_to("php85-slim-fpm-with-extensions")
   dockerfile = "Dockerfile.slim.fpm"
   args = {
     VARIANT = "fpm"
@@ -478,6 +515,8 @@ target "php85-slim-fpm-with-extensions" {
 # thecodingmachine/php:8.5-v5-fpm
 target "php85-fpm" {
   inherits = ["default"]
+  cache-from = cache_from("php85-fpm")
+  cache-to = cache_to("php85-fpm")
   tags = tag("8.5", "fpm")
   dockerfile = "Dockerfile.fpm"
   args = {
@@ -491,6 +530,8 @@ target "php85-fpm" {
 # thecodingmachine/php:8.5-v5-fpm-node26
 target "php85-fpm-node26" {
   inherits = ["default"]
+  cache-from = cache_from("php85-fpm-node26")
+  cache-to = cache_to("php85-fpm-node26")
   tags = tag("8.5", "fpm-node26")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -507,6 +548,8 @@ target "php85-fpm-node26" {
 # thecodingmachine/php:8.5-v5-fpm-node24
 target "php85-fpm-node24" {
   inherits = ["default"]
+  cache-from = cache_from("php85-fpm-node24")
+  cache-to = cache_to("php85-fpm-node24")
   tags = tag("8.5", "fpm-node24")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -523,6 +566,8 @@ target "php85-fpm-node24" {
 # thecodingmachine/php:8.5-v5-fpm-node22
 target "php85-fpm-node22" {
   inherits = ["default"]
+  cache-from = cache_from("php85-fpm-node22")
+  cache-to = cache_to("php85-fpm-node22")
   tags = tag("8.5", "fpm-node22")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -539,6 +584,8 @@ target "php85-fpm-node22" {
 # thecodingmachine/php:8.5-v5-fpm-node20
 target "php85-fpm-node20" {
   inherits = ["default"]
+  cache-from = cache_from("php85-fpm-node20")
+  cache-to = cache_to("php85-fpm-node20")
   tags = tag("8.5", "fpm-node20")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -555,6 +602,8 @@ target "php85-fpm-node20" {
 # thecodingmachine/php:8.5-v5-fpm-node18
 target "php85-fpm-node18" {
   inherits = ["default"]
+  cache-from = cache_from("php85-fpm-node18")
+  cache-to = cache_to("php85-fpm-node18")
   tags = tag("8.5", "fpm-node18")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -571,6 +620,8 @@ target "php85-fpm-node18" {
 # thecodingmachine/php:8.5-v5-slim-cli
 target "php85-slim-cli" {
   inherits = ["default"]
+  cache-from = cache_from("php85-slim-cli")
+  cache-to = cache_to("php85-slim-cli")
   tags = tag("8.5", "slim-cli")
   dockerfile = "Dockerfile.slim.cli"
   args = {
@@ -584,6 +635,8 @@ target "php85-slim-cli" {
 # The slim image of the variant with the extensions (not published)
 target "php85-slim-cli-with-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php85-slim-cli-with-extensions")
+  cache-to = cache_to("php85-slim-cli-with-extensions")
   dockerfile = "Dockerfile.slim.cli"
   args = {
     VARIANT = "cli"
@@ -597,6 +650,8 @@ target "php85-slim-cli-with-extensions" {
 # thecodingmachine/php:8.5-v5-cli
 target "php85-cli" {
   inherits = ["default"]
+  cache-from = cache_from("php85-cli")
+  cache-to = cache_to("php85-cli")
   tags = tag("8.5", "cli")
   dockerfile = "Dockerfile.cli"
   args = {
@@ -610,6 +665,8 @@ target "php85-cli" {
 # thecodingmachine/php:8.5-v5-cli-node26
 target "php85-cli-node26" {
   inherits = ["default"]
+  cache-from = cache_from("php85-cli-node26")
+  cache-to = cache_to("php85-cli-node26")
   tags = tag("8.5", "cli-node26")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -626,6 +683,8 @@ target "php85-cli-node26" {
 # thecodingmachine/php:8.5-v5-cli-node24
 target "php85-cli-node24" {
   inherits = ["default"]
+  cache-from = cache_from("php85-cli-node24")
+  cache-to = cache_to("php85-cli-node24")
   tags = tag("8.5", "cli-node24")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -642,6 +701,8 @@ target "php85-cli-node24" {
 # thecodingmachine/php:8.5-v5-cli-node22
 target "php85-cli-node22" {
   inherits = ["default"]
+  cache-from = cache_from("php85-cli-node22")
+  cache-to = cache_to("php85-cli-node22")
   tags = tag("8.5", "cli-node22")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -658,6 +719,8 @@ target "php85-cli-node22" {
 # thecodingmachine/php:8.5-v5-cli-node20
 target "php85-cli-node20" {
   inherits = ["default"]
+  cache-from = cache_from("php85-cli-node20")
+  cache-to = cache_to("php85-cli-node20")
   tags = tag("8.5", "cli-node20")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -674,6 +737,8 @@ target "php85-cli-node20" {
 # thecodingmachine/php:8.5-v5-cli-node18
 target "php85-cli-node18" {
   inherits = ["default"]
+  cache-from = cache_from("php85-cli-node18")
+  cache-to = cache_to("php85-cli-node18")
   tags = tag("8.5", "cli-node18")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -693,6 +758,8 @@ target "php85-cli-node18" {
 # Layers shared by the images of all the variants (not published)
 target "php84-base" {
   inherits = ["default"]
+  cache-from = cache_from("php84-base")
+  cache-to = cache_to("php84-base")
   dockerfile = "Dockerfile.base"
   output = ["type=cacheonly"]
   args = {
@@ -702,6 +769,8 @@ target "php84-base" {
 
 target "php84-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php84-extensions")
+  cache-to = cache_to("php84-extensions")
   dockerfile = "Dockerfile.extensions"
   output = ["type=cacheonly"]
   contexts = {
@@ -712,6 +781,8 @@ target "php84-extensions" {
 # thecodingmachine/php:8.4-v5-slim-apache
 target "php84-slim-apache" {
   inherits = ["default"]
+  cache-from = cache_from("php84-slim-apache")
+  cache-to = cache_to("php84-slim-apache")
   tags = tag("8.4", "slim-apache")
   dockerfile = "Dockerfile.slim.apache"
   args = {
@@ -725,6 +796,8 @@ target "php84-slim-apache" {
 # The slim image of the variant with the extensions (not published)
 target "php84-slim-apache-with-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php84-slim-apache-with-extensions")
+  cache-to = cache_to("php84-slim-apache-with-extensions")
   dockerfile = "Dockerfile.slim.apache"
   args = {
     VARIANT = "apache"
@@ -738,6 +811,8 @@ target "php84-slim-apache-with-extensions" {
 # thecodingmachine/php:8.4-v5-apache
 target "php84-apache" {
   inherits = ["default"]
+  cache-from = cache_from("php84-apache")
+  cache-to = cache_to("php84-apache")
   tags = tag("8.4", "apache")
   dockerfile = "Dockerfile.apache"
   args = {
@@ -751,6 +826,8 @@ target "php84-apache" {
 # thecodingmachine/php:8.4-v5-apache-node26
 target "php84-apache-node26" {
   inherits = ["default"]
+  cache-from = cache_from("php84-apache-node26")
+  cache-to = cache_to("php84-apache-node26")
   tags = tag("8.4", "apache-node26")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -767,6 +844,8 @@ target "php84-apache-node26" {
 # thecodingmachine/php:8.4-v5-apache-node24
 target "php84-apache-node24" {
   inherits = ["default"]
+  cache-from = cache_from("php84-apache-node24")
+  cache-to = cache_to("php84-apache-node24")
   tags = tag("8.4", "apache-node24")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -783,6 +862,8 @@ target "php84-apache-node24" {
 # thecodingmachine/php:8.4-v5-apache-node22
 target "php84-apache-node22" {
   inherits = ["default"]
+  cache-from = cache_from("php84-apache-node22")
+  cache-to = cache_to("php84-apache-node22")
   tags = tag("8.4", "apache-node22")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -799,6 +880,8 @@ target "php84-apache-node22" {
 # thecodingmachine/php:8.4-v5-apache-node20
 target "php84-apache-node20" {
   inherits = ["default"]
+  cache-from = cache_from("php84-apache-node20")
+  cache-to = cache_to("php84-apache-node20")
   tags = tag("8.4", "apache-node20")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -815,6 +898,8 @@ target "php84-apache-node20" {
 # thecodingmachine/php:8.4-v5-apache-node18
 target "php84-apache-node18" {
   inherits = ["default"]
+  cache-from = cache_from("php84-apache-node18")
+  cache-to = cache_to("php84-apache-node18")
   tags = tag("8.4", "apache-node18")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -831,6 +916,8 @@ target "php84-apache-node18" {
 # thecodingmachine/php:8.4-v5-slim-fpm
 target "php84-slim-fpm" {
   inherits = ["default"]
+  cache-from = cache_from("php84-slim-fpm")
+  cache-to = cache_to("php84-slim-fpm")
   tags = tag("8.4", "slim-fpm")
   dockerfile = "Dockerfile.slim.fpm"
   args = {
@@ -844,6 +931,8 @@ target "php84-slim-fpm" {
 # The slim image of the variant with the extensions (not published)
 target "php84-slim-fpm-with-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php84-slim-fpm-with-extensions")
+  cache-to = cache_to("php84-slim-fpm-with-extensions")
   dockerfile = "Dockerfile.slim.fpm"
   args = {
     VARIANT = "fpm"
@@ -857,6 +946,8 @@ target "php84-slim-fpm-with-extensions" {
 # thecodingmachine/php:8.4-v5-fpm
 target "php84-fpm" {
   inherits = ["default"]
+  cache-from = cache_from("php84-fpm")
+  cache-to = cache_to("php84-fpm")
   tags = tag("8.4", "fpm")
   dockerfile = "Dockerfile.fpm"
   args = {
@@ -870,6 +961,8 @@ target "php84-fpm" {
 # thecodingmachine/php:8.4-v5-fpm-node26
 target "php84-fpm-node26" {
   inherits = ["default"]
+  cache-from = cache_from("php84-fpm-node26")
+  cache-to = cache_to("php84-fpm-node26")
   tags = tag("8.4", "fpm-node26")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -886,6 +979,8 @@ target "php84-fpm-node26" {
 # thecodingmachine/php:8.4-v5-fpm-node24
 target "php84-fpm-node24" {
   inherits = ["default"]
+  cache-from = cache_from("php84-fpm-node24")
+  cache-to = cache_to("php84-fpm-node24")
   tags = tag("8.4", "fpm-node24")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -902,6 +997,8 @@ target "php84-fpm-node24" {
 # thecodingmachine/php:8.4-v5-fpm-node22
 target "php84-fpm-node22" {
   inherits = ["default"]
+  cache-from = cache_from("php84-fpm-node22")
+  cache-to = cache_to("php84-fpm-node22")
   tags = tag("8.4", "fpm-node22")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -918,6 +1015,8 @@ target "php84-fpm-node22" {
 # thecodingmachine/php:8.4-v5-fpm-node20
 target "php84-fpm-node20" {
   inherits = ["default"]
+  cache-from = cache_from("php84-fpm-node20")
+  cache-to = cache_to("php84-fpm-node20")
   tags = tag("8.4", "fpm-node20")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -934,6 +1033,8 @@ target "php84-fpm-node20" {
 # thecodingmachine/php:8.4-v5-fpm-node18
 target "php84-fpm-node18" {
   inherits = ["default"]
+  cache-from = cache_from("php84-fpm-node18")
+  cache-to = cache_to("php84-fpm-node18")
   tags = tag("8.4", "fpm-node18")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -950,6 +1051,8 @@ target "php84-fpm-node18" {
 # thecodingmachine/php:8.4-v5-slim-cli
 target "php84-slim-cli" {
   inherits = ["default"]
+  cache-from = cache_from("php84-slim-cli")
+  cache-to = cache_to("php84-slim-cli")
   tags = tag("8.4", "slim-cli")
   dockerfile = "Dockerfile.slim.cli"
   args = {
@@ -963,6 +1066,8 @@ target "php84-slim-cli" {
 # The slim image of the variant with the extensions (not published)
 target "php84-slim-cli-with-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php84-slim-cli-with-extensions")
+  cache-to = cache_to("php84-slim-cli-with-extensions")
   dockerfile = "Dockerfile.slim.cli"
   args = {
     VARIANT = "cli"
@@ -976,6 +1081,8 @@ target "php84-slim-cli-with-extensions" {
 # thecodingmachine/php:8.4-v5-cli
 target "php84-cli" {
   inherits = ["default"]
+  cache-from = cache_from("php84-cli")
+  cache-to = cache_to("php84-cli")
   tags = tag("8.4", "cli")
   dockerfile = "Dockerfile.cli"
   args = {
@@ -989,6 +1096,8 @@ target "php84-cli" {
 # thecodingmachine/php:8.4-v5-cli-node26
 target "php84-cli-node26" {
   inherits = ["default"]
+  cache-from = cache_from("php84-cli-node26")
+  cache-to = cache_to("php84-cli-node26")
   tags = tag("8.4", "cli-node26")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -1005,6 +1114,8 @@ target "php84-cli-node26" {
 # thecodingmachine/php:8.4-v5-cli-node24
 target "php84-cli-node24" {
   inherits = ["default"]
+  cache-from = cache_from("php84-cli-node24")
+  cache-to = cache_to("php84-cli-node24")
   tags = tag("8.4", "cli-node24")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -1021,6 +1132,8 @@ target "php84-cli-node24" {
 # thecodingmachine/php:8.4-v5-cli-node22
 target "php84-cli-node22" {
   inherits = ["default"]
+  cache-from = cache_from("php84-cli-node22")
+  cache-to = cache_to("php84-cli-node22")
   tags = tag("8.4", "cli-node22")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -1037,6 +1150,8 @@ target "php84-cli-node22" {
 # thecodingmachine/php:8.4-v5-cli-node20
 target "php84-cli-node20" {
   inherits = ["default"]
+  cache-from = cache_from("php84-cli-node20")
+  cache-to = cache_to("php84-cli-node20")
   tags = tag("8.4", "cli-node20")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -1053,6 +1168,8 @@ target "php84-cli-node20" {
 # thecodingmachine/php:8.4-v5-cli-node18
 target "php84-cli-node18" {
   inherits = ["default"]
+  cache-from = cache_from("php84-cli-node18")
+  cache-to = cache_to("php84-cli-node18")
   tags = tag("8.4", "cli-node18")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -1072,6 +1189,8 @@ target "php84-cli-node18" {
 # Layers shared by the images of all the variants (not published)
 target "php83-base" {
   inherits = ["default"]
+  cache-from = cache_from("php83-base")
+  cache-to = cache_to("php83-base")
   dockerfile = "Dockerfile.base"
   output = ["type=cacheonly"]
   args = {
@@ -1081,6 +1200,8 @@ target "php83-base" {
 
 target "php83-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php83-extensions")
+  cache-to = cache_to("php83-extensions")
   dockerfile = "Dockerfile.extensions"
   output = ["type=cacheonly"]
   contexts = {
@@ -1091,6 +1212,8 @@ target "php83-extensions" {
 # thecodingmachine/php:8.3-v5-slim-apache
 target "php83-slim-apache" {
   inherits = ["default"]
+  cache-from = cache_from("php83-slim-apache")
+  cache-to = cache_to("php83-slim-apache")
   tags = tag("8.3", "slim-apache")
   dockerfile = "Dockerfile.slim.apache"
   args = {
@@ -1104,6 +1227,8 @@ target "php83-slim-apache" {
 # The slim image of the variant with the extensions (not published)
 target "php83-slim-apache-with-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php83-slim-apache-with-extensions")
+  cache-to = cache_to("php83-slim-apache-with-extensions")
   dockerfile = "Dockerfile.slim.apache"
   args = {
     VARIANT = "apache"
@@ -1117,6 +1242,8 @@ target "php83-slim-apache-with-extensions" {
 # thecodingmachine/php:8.3-v5-apache
 target "php83-apache" {
   inherits = ["default"]
+  cache-from = cache_from("php83-apache")
+  cache-to = cache_to("php83-apache")
   tags = tag("8.3", "apache")
   dockerfile = "Dockerfile.apache"
   args = {
@@ -1130,6 +1257,8 @@ target "php83-apache" {
 # thecodingmachine/php:8.3-v5-apache-node26
 target "php83-apache-node26" {
   inherits = ["default"]
+  cache-from = cache_from("php83-apache-node26")
+  cache-to = cache_to("php83-apache-node26")
   tags = tag("8.3", "apache-node26")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -1146,6 +1275,8 @@ target "php83-apache-node26" {
 # thecodingmachine/php:8.3-v5-apache-node24
 target "php83-apache-node24" {
   inherits = ["default"]
+  cache-from = cache_from("php83-apache-node24")
+  cache-to = cache_to("php83-apache-node24")
   tags = tag("8.3", "apache-node24")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -1162,6 +1293,8 @@ target "php83-apache-node24" {
 # thecodingmachine/php:8.3-v5-apache-node22
 target "php83-apache-node22" {
   inherits = ["default"]
+  cache-from = cache_from("php83-apache-node22")
+  cache-to = cache_to("php83-apache-node22")
   tags = tag("8.3", "apache-node22")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -1178,6 +1311,8 @@ target "php83-apache-node22" {
 # thecodingmachine/php:8.3-v5-apache-node20
 target "php83-apache-node20" {
   inherits = ["default"]
+  cache-from = cache_from("php83-apache-node20")
+  cache-to = cache_to("php83-apache-node20")
   tags = tag("8.3", "apache-node20")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -1194,6 +1329,8 @@ target "php83-apache-node20" {
 # thecodingmachine/php:8.3-v5-apache-node18
 target "php83-apache-node18" {
   inherits = ["default"]
+  cache-from = cache_from("php83-apache-node18")
+  cache-to = cache_to("php83-apache-node18")
   tags = tag("8.3", "apache-node18")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -1210,6 +1347,8 @@ target "php83-apache-node18" {
 # thecodingmachine/php:8.3-v5-slim-fpm
 target "php83-slim-fpm" {
   inherits = ["default"]
+  cache-from = cache_from("php83-slim-fpm")
+  cache-to = cache_to("php83-slim-fpm")
   tags = tag("8.3", "slim-fpm")
   dockerfile = "Dockerfile.slim.fpm"
   args = {
@@ -1223,6 +1362,8 @@ target "php83-slim-fpm" {
 # The slim image of the variant with the extensions (not published)
 target "php83-slim-fpm-with-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php83-slim-fpm-with-extensions")
+  cache-to = cache_to("php83-slim-fpm-with-extensions")
   dockerfile = "Dockerfile.slim.fpm"
   args = {
     VARIANT = "fpm"
@@ -1236,6 +1377,8 @@ target "php83-slim-fpm-with-extensions" {
 # thecodingmachine/php:8.3-v5-fpm
 target "php83-fpm" {
   inherits = ["default"]
+  cache-from = cache_from("php83-fpm")
+  cache-to = cache_to("php83-fpm")
   tags = tag("8.3", "fpm")
   dockerfile = "Dockerfile.fpm"
   args = {
@@ -1249,6 +1392,8 @@ target "php83-fpm" {
 # thecodingmachine/php:8.3-v5-fpm-node26
 target "php83-fpm-node26" {
   inherits = ["default"]
+  cache-from = cache_from("php83-fpm-node26")
+  cache-to = cache_to("php83-fpm-node26")
   tags = tag("8.3", "fpm-node26")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -1265,6 +1410,8 @@ target "php83-fpm-node26" {
 # thecodingmachine/php:8.3-v5-fpm-node24
 target "php83-fpm-node24" {
   inherits = ["default"]
+  cache-from = cache_from("php83-fpm-node24")
+  cache-to = cache_to("php83-fpm-node24")
   tags = tag("8.3", "fpm-node24")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -1281,6 +1428,8 @@ target "php83-fpm-node24" {
 # thecodingmachine/php:8.3-v5-fpm-node22
 target "php83-fpm-node22" {
   inherits = ["default"]
+  cache-from = cache_from("php83-fpm-node22")
+  cache-to = cache_to("php83-fpm-node22")
   tags = tag("8.3", "fpm-node22")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -1297,6 +1446,8 @@ target "php83-fpm-node22" {
 # thecodingmachine/php:8.3-v5-fpm-node20
 target "php83-fpm-node20" {
   inherits = ["default"]
+  cache-from = cache_from("php83-fpm-node20")
+  cache-to = cache_to("php83-fpm-node20")
   tags = tag("8.3", "fpm-node20")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -1313,6 +1464,8 @@ target "php83-fpm-node20" {
 # thecodingmachine/php:8.3-v5-fpm-node18
 target "php83-fpm-node18" {
   inherits = ["default"]
+  cache-from = cache_from("php83-fpm-node18")
+  cache-to = cache_to("php83-fpm-node18")
   tags = tag("8.3", "fpm-node18")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -1329,6 +1482,8 @@ target "php83-fpm-node18" {
 # thecodingmachine/php:8.3-v5-slim-cli
 target "php83-slim-cli" {
   inherits = ["default"]
+  cache-from = cache_from("php83-slim-cli")
+  cache-to = cache_to("php83-slim-cli")
   tags = tag("8.3", "slim-cli")
   dockerfile = "Dockerfile.slim.cli"
   args = {
@@ -1342,6 +1497,8 @@ target "php83-slim-cli" {
 # The slim image of the variant with the extensions (not published)
 target "php83-slim-cli-with-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php83-slim-cli-with-extensions")
+  cache-to = cache_to("php83-slim-cli-with-extensions")
   dockerfile = "Dockerfile.slim.cli"
   args = {
     VARIANT = "cli"
@@ -1355,6 +1512,8 @@ target "php83-slim-cli-with-extensions" {
 # thecodingmachine/php:8.3-v5-cli
 target "php83-cli" {
   inherits = ["default"]
+  cache-from = cache_from("php83-cli")
+  cache-to = cache_to("php83-cli")
   tags = tag("8.3", "cli")
   dockerfile = "Dockerfile.cli"
   args = {
@@ -1368,6 +1527,8 @@ target "php83-cli" {
 # thecodingmachine/php:8.3-v5-cli-node26
 target "php83-cli-node26" {
   inherits = ["default"]
+  cache-from = cache_from("php83-cli-node26")
+  cache-to = cache_to("php83-cli-node26")
   tags = tag("8.3", "cli-node26")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -1384,6 +1545,8 @@ target "php83-cli-node26" {
 # thecodingmachine/php:8.3-v5-cli-node24
 target "php83-cli-node24" {
   inherits = ["default"]
+  cache-from = cache_from("php83-cli-node24")
+  cache-to = cache_to("php83-cli-node24")
   tags = tag("8.3", "cli-node24")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -1400,6 +1563,8 @@ target "php83-cli-node24" {
 # thecodingmachine/php:8.3-v5-cli-node22
 target "php83-cli-node22" {
   inherits = ["default"]
+  cache-from = cache_from("php83-cli-node22")
+  cache-to = cache_to("php83-cli-node22")
   tags = tag("8.3", "cli-node22")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -1416,6 +1581,8 @@ target "php83-cli-node22" {
 # thecodingmachine/php:8.3-v5-cli-node20
 target "php83-cli-node20" {
   inherits = ["default"]
+  cache-from = cache_from("php83-cli-node20")
+  cache-to = cache_to("php83-cli-node20")
   tags = tag("8.3", "cli-node20")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -1432,6 +1599,8 @@ target "php83-cli-node20" {
 # thecodingmachine/php:8.3-v5-cli-node18
 target "php83-cli-node18" {
   inherits = ["default"]
+  cache-from = cache_from("php83-cli-node18")
+  cache-to = cache_to("php83-cli-node18")
   tags = tag("8.3", "cli-node18")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -1451,6 +1620,8 @@ target "php83-cli-node18" {
 # Layers shared by the images of all the variants (not published)
 target "php82-base" {
   inherits = ["default"]
+  cache-from = cache_from("php82-base")
+  cache-to = cache_to("php82-base")
   dockerfile = "Dockerfile.base"
   output = ["type=cacheonly"]
   args = {
@@ -1460,6 +1631,8 @@ target "php82-base" {
 
 target "php82-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php82-extensions")
+  cache-to = cache_to("php82-extensions")
   dockerfile = "Dockerfile.extensions"
   output = ["type=cacheonly"]
   contexts = {
@@ -1470,6 +1643,8 @@ target "php82-extensions" {
 # thecodingmachine/php:8.2-v5-slim-apache
 target "php82-slim-apache" {
   inherits = ["default"]
+  cache-from = cache_from("php82-slim-apache")
+  cache-to = cache_to("php82-slim-apache")
   tags = tag("8.2", "slim-apache")
   dockerfile = "Dockerfile.slim.apache"
   args = {
@@ -1483,6 +1658,8 @@ target "php82-slim-apache" {
 # The slim image of the variant with the extensions (not published)
 target "php82-slim-apache-with-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php82-slim-apache-with-extensions")
+  cache-to = cache_to("php82-slim-apache-with-extensions")
   dockerfile = "Dockerfile.slim.apache"
   args = {
     VARIANT = "apache"
@@ -1496,6 +1673,8 @@ target "php82-slim-apache-with-extensions" {
 # thecodingmachine/php:8.2-v5-apache
 target "php82-apache" {
   inherits = ["default"]
+  cache-from = cache_from("php82-apache")
+  cache-to = cache_to("php82-apache")
   tags = tag("8.2", "apache")
   dockerfile = "Dockerfile.apache"
   args = {
@@ -1509,6 +1688,8 @@ target "php82-apache" {
 # thecodingmachine/php:8.2-v5-apache-node26
 target "php82-apache-node26" {
   inherits = ["default"]
+  cache-from = cache_from("php82-apache-node26")
+  cache-to = cache_to("php82-apache-node26")
   tags = tag("8.2", "apache-node26")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -1525,6 +1706,8 @@ target "php82-apache-node26" {
 # thecodingmachine/php:8.2-v5-apache-node24
 target "php82-apache-node24" {
   inherits = ["default"]
+  cache-from = cache_from("php82-apache-node24")
+  cache-to = cache_to("php82-apache-node24")
   tags = tag("8.2", "apache-node24")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -1541,6 +1724,8 @@ target "php82-apache-node24" {
 # thecodingmachine/php:8.2-v5-apache-node22
 target "php82-apache-node22" {
   inherits = ["default"]
+  cache-from = cache_from("php82-apache-node22")
+  cache-to = cache_to("php82-apache-node22")
   tags = tag("8.2", "apache-node22")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -1557,6 +1742,8 @@ target "php82-apache-node22" {
 # thecodingmachine/php:8.2-v5-apache-node20
 target "php82-apache-node20" {
   inherits = ["default"]
+  cache-from = cache_from("php82-apache-node20")
+  cache-to = cache_to("php82-apache-node20")
   tags = tag("8.2", "apache-node20")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -1573,6 +1760,8 @@ target "php82-apache-node20" {
 # thecodingmachine/php:8.2-v5-apache-node18
 target "php82-apache-node18" {
   inherits = ["default"]
+  cache-from = cache_from("php82-apache-node18")
+  cache-to = cache_to("php82-apache-node18")
   tags = tag("8.2", "apache-node18")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -1589,6 +1778,8 @@ target "php82-apache-node18" {
 # thecodingmachine/php:8.2-v5-slim-fpm
 target "php82-slim-fpm" {
   inherits = ["default"]
+  cache-from = cache_from("php82-slim-fpm")
+  cache-to = cache_to("php82-slim-fpm")
   tags = tag("8.2", "slim-fpm")
   dockerfile = "Dockerfile.slim.fpm"
   args = {
@@ -1602,6 +1793,8 @@ target "php82-slim-fpm" {
 # The slim image of the variant with the extensions (not published)
 target "php82-slim-fpm-with-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php82-slim-fpm-with-extensions")
+  cache-to = cache_to("php82-slim-fpm-with-extensions")
   dockerfile = "Dockerfile.slim.fpm"
   args = {
     VARIANT = "fpm"
@@ -1615,6 +1808,8 @@ target "php82-slim-fpm-with-extensions" {
 # thecodingmachine/php:8.2-v5-fpm
 target "php82-fpm" {
   inherits = ["default"]
+  cache-from = cache_from("php82-fpm")
+  cache-to = cache_to("php82-fpm")
   tags = tag("8.2", "fpm")
   dockerfile = "Dockerfile.fpm"
   args = {
@@ -1628,6 +1823,8 @@ target "php82-fpm" {
 # thecodingmachine/php:8.2-v5-fpm-node26
 target "php82-fpm-node26" {
   inherits = ["default"]
+  cache-from = cache_from("php82-fpm-node26")
+  cache-to = cache_to("php82-fpm-node26")
   tags = tag("8.2", "fpm-node26")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -1644,6 +1841,8 @@ target "php82-fpm-node26" {
 # thecodingmachine/php:8.2-v5-fpm-node24
 target "php82-fpm-node24" {
   inherits = ["default"]
+  cache-from = cache_from("php82-fpm-node24")
+  cache-to = cache_to("php82-fpm-node24")
   tags = tag("8.2", "fpm-node24")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -1660,6 +1859,8 @@ target "php82-fpm-node24" {
 # thecodingmachine/php:8.2-v5-fpm-node22
 target "php82-fpm-node22" {
   inherits = ["default"]
+  cache-from = cache_from("php82-fpm-node22")
+  cache-to = cache_to("php82-fpm-node22")
   tags = tag("8.2", "fpm-node22")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -1676,6 +1877,8 @@ target "php82-fpm-node22" {
 # thecodingmachine/php:8.2-v5-fpm-node20
 target "php82-fpm-node20" {
   inherits = ["default"]
+  cache-from = cache_from("php82-fpm-node20")
+  cache-to = cache_to("php82-fpm-node20")
   tags = tag("8.2", "fpm-node20")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -1692,6 +1895,8 @@ target "php82-fpm-node20" {
 # thecodingmachine/php:8.2-v5-fpm-node18
 target "php82-fpm-node18" {
   inherits = ["default"]
+  cache-from = cache_from("php82-fpm-node18")
+  cache-to = cache_to("php82-fpm-node18")
   tags = tag("8.2", "fpm-node18")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -1708,6 +1913,8 @@ target "php82-fpm-node18" {
 # thecodingmachine/php:8.2-v5-slim-cli
 target "php82-slim-cli" {
   inherits = ["default"]
+  cache-from = cache_from("php82-slim-cli")
+  cache-to = cache_to("php82-slim-cli")
   tags = tag("8.2", "slim-cli")
   dockerfile = "Dockerfile.slim.cli"
   args = {
@@ -1721,6 +1928,8 @@ target "php82-slim-cli" {
 # The slim image of the variant with the extensions (not published)
 target "php82-slim-cli-with-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php82-slim-cli-with-extensions")
+  cache-to = cache_to("php82-slim-cli-with-extensions")
   dockerfile = "Dockerfile.slim.cli"
   args = {
     VARIANT = "cli"
@@ -1734,6 +1943,8 @@ target "php82-slim-cli-with-extensions" {
 # thecodingmachine/php:8.2-v5-cli
 target "php82-cli" {
   inherits = ["default"]
+  cache-from = cache_from("php82-cli")
+  cache-to = cache_to("php82-cli")
   tags = tag("8.2", "cli")
   dockerfile = "Dockerfile.cli"
   args = {
@@ -1747,6 +1958,8 @@ target "php82-cli" {
 # thecodingmachine/php:8.2-v5-cli-node26
 target "php82-cli-node26" {
   inherits = ["default"]
+  cache-from = cache_from("php82-cli-node26")
+  cache-to = cache_to("php82-cli-node26")
   tags = tag("8.2", "cli-node26")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -1763,6 +1976,8 @@ target "php82-cli-node26" {
 # thecodingmachine/php:8.2-v5-cli-node24
 target "php82-cli-node24" {
   inherits = ["default"]
+  cache-from = cache_from("php82-cli-node24")
+  cache-to = cache_to("php82-cli-node24")
   tags = tag("8.2", "cli-node24")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -1779,6 +1994,8 @@ target "php82-cli-node24" {
 # thecodingmachine/php:8.2-v5-cli-node22
 target "php82-cli-node22" {
   inherits = ["default"]
+  cache-from = cache_from("php82-cli-node22")
+  cache-to = cache_to("php82-cli-node22")
   tags = tag("8.2", "cli-node22")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -1795,6 +2012,8 @@ target "php82-cli-node22" {
 # thecodingmachine/php:8.2-v5-cli-node20
 target "php82-cli-node20" {
   inherits = ["default"]
+  cache-from = cache_from("php82-cli-node20")
+  cache-to = cache_to("php82-cli-node20")
   tags = tag("8.2", "cli-node20")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -1811,6 +2030,8 @@ target "php82-cli-node20" {
 # thecodingmachine/php:8.2-v5-cli-node18
 target "php82-cli-node18" {
   inherits = ["default"]
+  cache-from = cache_from("php82-cli-node18")
+  cache-to = cache_to("php82-cli-node18")
   tags = tag("8.2", "cli-node18")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -1830,6 +2051,8 @@ target "php82-cli-node18" {
 # Layers shared by the images of all the variants (not published)
 target "php81-base" {
   inherits = ["default"]
+  cache-from = cache_from("php81-base")
+  cache-to = cache_to("php81-base")
   dockerfile = "Dockerfile.base"
   output = ["type=cacheonly"]
   args = {
@@ -1839,6 +2062,8 @@ target "php81-base" {
 
 target "php81-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php81-extensions")
+  cache-to = cache_to("php81-extensions")
   dockerfile = "Dockerfile.extensions"
   output = ["type=cacheonly"]
   contexts = {
@@ -1849,6 +2074,8 @@ target "php81-extensions" {
 # thecodingmachine/php:8.1-v5-slim-apache
 target "php81-slim-apache" {
   inherits = ["default"]
+  cache-from = cache_from("php81-slim-apache")
+  cache-to = cache_to("php81-slim-apache")
   tags = tag("8.1", "slim-apache")
   dockerfile = "Dockerfile.slim.apache"
   args = {
@@ -1862,6 +2089,8 @@ target "php81-slim-apache" {
 # The slim image of the variant with the extensions (not published)
 target "php81-slim-apache-with-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php81-slim-apache-with-extensions")
+  cache-to = cache_to("php81-slim-apache-with-extensions")
   dockerfile = "Dockerfile.slim.apache"
   args = {
     VARIANT = "apache"
@@ -1875,6 +2104,8 @@ target "php81-slim-apache-with-extensions" {
 # thecodingmachine/php:8.1-v5-apache
 target "php81-apache" {
   inherits = ["default"]
+  cache-from = cache_from("php81-apache")
+  cache-to = cache_to("php81-apache")
   tags = tag("8.1", "apache")
   dockerfile = "Dockerfile.apache"
   args = {
@@ -1888,6 +2119,8 @@ target "php81-apache" {
 # thecodingmachine/php:8.1-v5-apache-node26
 target "php81-apache-node26" {
   inherits = ["default"]
+  cache-from = cache_from("php81-apache-node26")
+  cache-to = cache_to("php81-apache-node26")
   tags = tag("8.1", "apache-node26")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -1904,6 +2137,8 @@ target "php81-apache-node26" {
 # thecodingmachine/php:8.1-v5-apache-node24
 target "php81-apache-node24" {
   inherits = ["default"]
+  cache-from = cache_from("php81-apache-node24")
+  cache-to = cache_to("php81-apache-node24")
   tags = tag("8.1", "apache-node24")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -1920,6 +2155,8 @@ target "php81-apache-node24" {
 # thecodingmachine/php:8.1-v5-apache-node22
 target "php81-apache-node22" {
   inherits = ["default"]
+  cache-from = cache_from("php81-apache-node22")
+  cache-to = cache_to("php81-apache-node22")
   tags = tag("8.1", "apache-node22")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -1936,6 +2173,8 @@ target "php81-apache-node22" {
 # thecodingmachine/php:8.1-v5-apache-node20
 target "php81-apache-node20" {
   inherits = ["default"]
+  cache-from = cache_from("php81-apache-node20")
+  cache-to = cache_to("php81-apache-node20")
   tags = tag("8.1", "apache-node20")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -1952,6 +2191,8 @@ target "php81-apache-node20" {
 # thecodingmachine/php:8.1-v5-apache-node18
 target "php81-apache-node18" {
   inherits = ["default"]
+  cache-from = cache_from("php81-apache-node18")
+  cache-to = cache_to("php81-apache-node18")
   tags = tag("8.1", "apache-node18")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -1968,6 +2209,8 @@ target "php81-apache-node18" {
 # thecodingmachine/php:8.1-v5-slim-fpm
 target "php81-slim-fpm" {
   inherits = ["default"]
+  cache-from = cache_from("php81-slim-fpm")
+  cache-to = cache_to("php81-slim-fpm")
   tags = tag("8.1", "slim-fpm")
   dockerfile = "Dockerfile.slim.fpm"
   args = {
@@ -1981,6 +2224,8 @@ target "php81-slim-fpm" {
 # The slim image of the variant with the extensions (not published)
 target "php81-slim-fpm-with-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php81-slim-fpm-with-extensions")
+  cache-to = cache_to("php81-slim-fpm-with-extensions")
   dockerfile = "Dockerfile.slim.fpm"
   args = {
     VARIANT = "fpm"
@@ -1994,6 +2239,8 @@ target "php81-slim-fpm-with-extensions" {
 # thecodingmachine/php:8.1-v5-fpm
 target "php81-fpm" {
   inherits = ["default"]
+  cache-from = cache_from("php81-fpm")
+  cache-to = cache_to("php81-fpm")
   tags = tag("8.1", "fpm")
   dockerfile = "Dockerfile.fpm"
   args = {
@@ -2007,6 +2254,8 @@ target "php81-fpm" {
 # thecodingmachine/php:8.1-v5-fpm-node26
 target "php81-fpm-node26" {
   inherits = ["default"]
+  cache-from = cache_from("php81-fpm-node26")
+  cache-to = cache_to("php81-fpm-node26")
   tags = tag("8.1", "fpm-node26")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -2023,6 +2272,8 @@ target "php81-fpm-node26" {
 # thecodingmachine/php:8.1-v5-fpm-node24
 target "php81-fpm-node24" {
   inherits = ["default"]
+  cache-from = cache_from("php81-fpm-node24")
+  cache-to = cache_to("php81-fpm-node24")
   tags = tag("8.1", "fpm-node24")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -2039,6 +2290,8 @@ target "php81-fpm-node24" {
 # thecodingmachine/php:8.1-v5-fpm-node22
 target "php81-fpm-node22" {
   inherits = ["default"]
+  cache-from = cache_from("php81-fpm-node22")
+  cache-to = cache_to("php81-fpm-node22")
   tags = tag("8.1", "fpm-node22")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -2055,6 +2308,8 @@ target "php81-fpm-node22" {
 # thecodingmachine/php:8.1-v5-fpm-node20
 target "php81-fpm-node20" {
   inherits = ["default"]
+  cache-from = cache_from("php81-fpm-node20")
+  cache-to = cache_to("php81-fpm-node20")
   tags = tag("8.1", "fpm-node20")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -2071,6 +2326,8 @@ target "php81-fpm-node20" {
 # thecodingmachine/php:8.1-v5-fpm-node18
 target "php81-fpm-node18" {
   inherits = ["default"]
+  cache-from = cache_from("php81-fpm-node18")
+  cache-to = cache_to("php81-fpm-node18")
   tags = tag("8.1", "fpm-node18")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -2087,6 +2344,8 @@ target "php81-fpm-node18" {
 # thecodingmachine/php:8.1-v5-slim-cli
 target "php81-slim-cli" {
   inherits = ["default"]
+  cache-from = cache_from("php81-slim-cli")
+  cache-to = cache_to("php81-slim-cli")
   tags = tag("8.1", "slim-cli")
   dockerfile = "Dockerfile.slim.cli"
   args = {
@@ -2100,6 +2359,8 @@ target "php81-slim-cli" {
 # The slim image of the variant with the extensions (not published)
 target "php81-slim-cli-with-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php81-slim-cli-with-extensions")
+  cache-to = cache_to("php81-slim-cli-with-extensions")
   dockerfile = "Dockerfile.slim.cli"
   args = {
     VARIANT = "cli"
@@ -2113,6 +2374,8 @@ target "php81-slim-cli-with-extensions" {
 # thecodingmachine/php:8.1-v5-cli
 target "php81-cli" {
   inherits = ["default"]
+  cache-from = cache_from("php81-cli")
+  cache-to = cache_to("php81-cli")
   tags = tag("8.1", "cli")
   dockerfile = "Dockerfile.cli"
   args = {
@@ -2126,6 +2389,8 @@ target "php81-cli" {
 # thecodingmachine/php:8.1-v5-cli-node26
 target "php81-cli-node26" {
   inherits = ["default"]
+  cache-from = cache_from("php81-cli-node26")
+  cache-to = cache_to("php81-cli-node26")
   tags = tag("8.1", "cli-node26")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -2142,6 +2407,8 @@ target "php81-cli-node26" {
 # thecodingmachine/php:8.1-v5-cli-node24
 target "php81-cli-node24" {
   inherits = ["default"]
+  cache-from = cache_from("php81-cli-node24")
+  cache-to = cache_to("php81-cli-node24")
   tags = tag("8.1", "cli-node24")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -2158,6 +2425,8 @@ target "php81-cli-node24" {
 # thecodingmachine/php:8.1-v5-cli-node22
 target "php81-cli-node22" {
   inherits = ["default"]
+  cache-from = cache_from("php81-cli-node22")
+  cache-to = cache_to("php81-cli-node22")
   tags = tag("8.1", "cli-node22")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -2174,6 +2443,8 @@ target "php81-cli-node22" {
 # thecodingmachine/php:8.1-v5-cli-node20
 target "php81-cli-node20" {
   inherits = ["default"]
+  cache-from = cache_from("php81-cli-node20")
+  cache-to = cache_to("php81-cli-node20")
   tags = tag("8.1", "cli-node20")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -2190,6 +2461,8 @@ target "php81-cli-node20" {
 # thecodingmachine/php:8.1-v5-cli-node18
 target "php81-cli-node18" {
   inherits = ["default"]
+  cache-from = cache_from("php81-cli-node18")
+  cache-to = cache_to("php81-cli-node18")
   tags = tag("8.1", "cli-node18")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -2209,6 +2482,8 @@ target "php81-cli-node18" {
 # Layers shared by the images of all the variants (not published)
 target "php80-base" {
   inherits = ["default"]
+  cache-from = cache_from("php80-base")
+  cache-to = cache_to("php80-base")
   dockerfile = "Dockerfile.base"
   output = ["type=cacheonly"]
   args = {
@@ -2218,6 +2493,8 @@ target "php80-base" {
 
 target "php80-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php80-extensions")
+  cache-to = cache_to("php80-extensions")
   dockerfile = "Dockerfile.extensions"
   output = ["type=cacheonly"]
   contexts = {
@@ -2228,6 +2505,8 @@ target "php80-extensions" {
 # thecodingmachine/php:8.0-v5-slim-apache
 target "php80-slim-apache" {
   inherits = ["default"]
+  cache-from = cache_from("php80-slim-apache")
+  cache-to = cache_to("php80-slim-apache")
   tags = tag("8.0", "slim-apache")
   dockerfile = "Dockerfile.slim.apache"
   args = {
@@ -2241,6 +2520,8 @@ target "php80-slim-apache" {
 # The slim image of the variant with the extensions (not published)
 target "php80-slim-apache-with-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php80-slim-apache-with-extensions")
+  cache-to = cache_to("php80-slim-apache-with-extensions")
   dockerfile = "Dockerfile.slim.apache"
   args = {
     VARIANT = "apache"
@@ -2254,6 +2535,8 @@ target "php80-slim-apache-with-extensions" {
 # thecodingmachine/php:8.0-v5-apache
 target "php80-apache" {
   inherits = ["default"]
+  cache-from = cache_from("php80-apache")
+  cache-to = cache_to("php80-apache")
   tags = tag("8.0", "apache")
   dockerfile = "Dockerfile.apache"
   args = {
@@ -2267,6 +2550,8 @@ target "php80-apache" {
 # thecodingmachine/php:8.0-v5-apache-node26
 target "php80-apache-node26" {
   inherits = ["default"]
+  cache-from = cache_from("php80-apache-node26")
+  cache-to = cache_to("php80-apache-node26")
   tags = tag("8.0", "apache-node26")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -2283,6 +2568,8 @@ target "php80-apache-node26" {
 # thecodingmachine/php:8.0-v5-apache-node24
 target "php80-apache-node24" {
   inherits = ["default"]
+  cache-from = cache_from("php80-apache-node24")
+  cache-to = cache_to("php80-apache-node24")
   tags = tag("8.0", "apache-node24")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -2299,6 +2586,8 @@ target "php80-apache-node24" {
 # thecodingmachine/php:8.0-v5-apache-node22
 target "php80-apache-node22" {
   inherits = ["default"]
+  cache-from = cache_from("php80-apache-node22")
+  cache-to = cache_to("php80-apache-node22")
   tags = tag("8.0", "apache-node22")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -2315,6 +2604,8 @@ target "php80-apache-node22" {
 # thecodingmachine/php:8.0-v5-apache-node20
 target "php80-apache-node20" {
   inherits = ["default"]
+  cache-from = cache_from("php80-apache-node20")
+  cache-to = cache_to("php80-apache-node20")
   tags = tag("8.0", "apache-node20")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -2331,6 +2622,8 @@ target "php80-apache-node20" {
 # thecodingmachine/php:8.0-v5-apache-node18
 target "php80-apache-node18" {
   inherits = ["default"]
+  cache-from = cache_from("php80-apache-node18")
+  cache-to = cache_to("php80-apache-node18")
   tags = tag("8.0", "apache-node18")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -2347,6 +2640,8 @@ target "php80-apache-node18" {
 # thecodingmachine/php:8.0-v5-slim-fpm
 target "php80-slim-fpm" {
   inherits = ["default"]
+  cache-from = cache_from("php80-slim-fpm")
+  cache-to = cache_to("php80-slim-fpm")
   tags = tag("8.0", "slim-fpm")
   dockerfile = "Dockerfile.slim.fpm"
   args = {
@@ -2360,6 +2655,8 @@ target "php80-slim-fpm" {
 # The slim image of the variant with the extensions (not published)
 target "php80-slim-fpm-with-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php80-slim-fpm-with-extensions")
+  cache-to = cache_to("php80-slim-fpm-with-extensions")
   dockerfile = "Dockerfile.slim.fpm"
   args = {
     VARIANT = "fpm"
@@ -2373,6 +2670,8 @@ target "php80-slim-fpm-with-extensions" {
 # thecodingmachine/php:8.0-v5-fpm
 target "php80-fpm" {
   inherits = ["default"]
+  cache-from = cache_from("php80-fpm")
+  cache-to = cache_to("php80-fpm")
   tags = tag("8.0", "fpm")
   dockerfile = "Dockerfile.fpm"
   args = {
@@ -2386,6 +2685,8 @@ target "php80-fpm" {
 # thecodingmachine/php:8.0-v5-fpm-node26
 target "php80-fpm-node26" {
   inherits = ["default"]
+  cache-from = cache_from("php80-fpm-node26")
+  cache-to = cache_to("php80-fpm-node26")
   tags = tag("8.0", "fpm-node26")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -2402,6 +2703,8 @@ target "php80-fpm-node26" {
 # thecodingmachine/php:8.0-v5-fpm-node24
 target "php80-fpm-node24" {
   inherits = ["default"]
+  cache-from = cache_from("php80-fpm-node24")
+  cache-to = cache_to("php80-fpm-node24")
   tags = tag("8.0", "fpm-node24")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -2418,6 +2721,8 @@ target "php80-fpm-node24" {
 # thecodingmachine/php:8.0-v5-fpm-node22
 target "php80-fpm-node22" {
   inherits = ["default"]
+  cache-from = cache_from("php80-fpm-node22")
+  cache-to = cache_to("php80-fpm-node22")
   tags = tag("8.0", "fpm-node22")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -2434,6 +2739,8 @@ target "php80-fpm-node22" {
 # thecodingmachine/php:8.0-v5-fpm-node20
 target "php80-fpm-node20" {
   inherits = ["default"]
+  cache-from = cache_from("php80-fpm-node20")
+  cache-to = cache_to("php80-fpm-node20")
   tags = tag("8.0", "fpm-node20")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -2450,6 +2757,8 @@ target "php80-fpm-node20" {
 # thecodingmachine/php:8.0-v5-fpm-node18
 target "php80-fpm-node18" {
   inherits = ["default"]
+  cache-from = cache_from("php80-fpm-node18")
+  cache-to = cache_to("php80-fpm-node18")
   tags = tag("8.0", "fpm-node18")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -2466,6 +2775,8 @@ target "php80-fpm-node18" {
 # thecodingmachine/php:8.0-v5-slim-cli
 target "php80-slim-cli" {
   inherits = ["default"]
+  cache-from = cache_from("php80-slim-cli")
+  cache-to = cache_to("php80-slim-cli")
   tags = tag("8.0", "slim-cli")
   dockerfile = "Dockerfile.slim.cli"
   args = {
@@ -2479,6 +2790,8 @@ target "php80-slim-cli" {
 # The slim image of the variant with the extensions (not published)
 target "php80-slim-cli-with-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php80-slim-cli-with-extensions")
+  cache-to = cache_to("php80-slim-cli-with-extensions")
   dockerfile = "Dockerfile.slim.cli"
   args = {
     VARIANT = "cli"
@@ -2492,6 +2805,8 @@ target "php80-slim-cli-with-extensions" {
 # thecodingmachine/php:8.0-v5-cli
 target "php80-cli" {
   inherits = ["default"]
+  cache-from = cache_from("php80-cli")
+  cache-to = cache_to("php80-cli")
   tags = tag("8.0", "cli")
   dockerfile = "Dockerfile.cli"
   args = {
@@ -2505,6 +2820,8 @@ target "php80-cli" {
 # thecodingmachine/php:8.0-v5-cli-node26
 target "php80-cli-node26" {
   inherits = ["default"]
+  cache-from = cache_from("php80-cli-node26")
+  cache-to = cache_to("php80-cli-node26")
   tags = tag("8.0", "cli-node26")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -2521,6 +2838,8 @@ target "php80-cli-node26" {
 # thecodingmachine/php:8.0-v5-cli-node24
 target "php80-cli-node24" {
   inherits = ["default"]
+  cache-from = cache_from("php80-cli-node24")
+  cache-to = cache_to("php80-cli-node24")
   tags = tag("8.0", "cli-node24")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -2537,6 +2856,8 @@ target "php80-cli-node24" {
 # thecodingmachine/php:8.0-v5-cli-node22
 target "php80-cli-node22" {
   inherits = ["default"]
+  cache-from = cache_from("php80-cli-node22")
+  cache-to = cache_to("php80-cli-node22")
   tags = tag("8.0", "cli-node22")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -2553,6 +2874,8 @@ target "php80-cli-node22" {
 # thecodingmachine/php:8.0-v5-cli-node20
 target "php80-cli-node20" {
   inherits = ["default"]
+  cache-from = cache_from("php80-cli-node20")
+  cache-to = cache_to("php80-cli-node20")
   tags = tag("8.0", "cli-node20")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -2569,6 +2892,8 @@ target "php80-cli-node20" {
 # thecodingmachine/php:8.0-v5-cli-node18
 target "php80-cli-node18" {
   inherits = ["default"]
+  cache-from = cache_from("php80-cli-node18")
+  cache-to = cache_to("php80-cli-node18")
   tags = tag("8.0", "cli-node18")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -2588,6 +2913,8 @@ target "php80-cli-node18" {
 # Layers shared by the images of all the variants (not published)
 target "php74-base" {
   inherits = ["default"]
+  cache-from = cache_from("php74-base")
+  cache-to = cache_to("php74-base")
   dockerfile = "Dockerfile.base"
   output = ["type=cacheonly"]
   args = {
@@ -2597,6 +2924,8 @@ target "php74-base" {
 
 target "php74-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php74-extensions")
+  cache-to = cache_to("php74-extensions")
   dockerfile = "Dockerfile.extensions"
   output = ["type=cacheonly"]
   contexts = {
@@ -2607,6 +2936,8 @@ target "php74-extensions" {
 # thecodingmachine/php:7.4-v5-slim-apache
 target "php74-slim-apache" {
   inherits = ["default"]
+  cache-from = cache_from("php74-slim-apache")
+  cache-to = cache_to("php74-slim-apache")
   tags = tag("7.4", "slim-apache")
   dockerfile = "Dockerfile.slim.apache"
   args = {
@@ -2620,6 +2951,8 @@ target "php74-slim-apache" {
 # The slim image of the variant with the extensions (not published)
 target "php74-slim-apache-with-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php74-slim-apache-with-extensions")
+  cache-to = cache_to("php74-slim-apache-with-extensions")
   dockerfile = "Dockerfile.slim.apache"
   args = {
     VARIANT = "apache"
@@ -2633,6 +2966,8 @@ target "php74-slim-apache-with-extensions" {
 # thecodingmachine/php:7.4-v5-apache
 target "php74-apache" {
   inherits = ["default"]
+  cache-from = cache_from("php74-apache")
+  cache-to = cache_to("php74-apache")
   tags = tag("7.4", "apache")
   dockerfile = "Dockerfile.apache"
   args = {
@@ -2646,6 +2981,8 @@ target "php74-apache" {
 # thecodingmachine/php:7.4-v5-apache-node26
 target "php74-apache-node26" {
   inherits = ["default"]
+  cache-from = cache_from("php74-apache-node26")
+  cache-to = cache_to("php74-apache-node26")
   tags = tag("7.4", "apache-node26")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -2662,6 +2999,8 @@ target "php74-apache-node26" {
 # thecodingmachine/php:7.4-v5-apache-node24
 target "php74-apache-node24" {
   inherits = ["default"]
+  cache-from = cache_from("php74-apache-node24")
+  cache-to = cache_to("php74-apache-node24")
   tags = tag("7.4", "apache-node24")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -2678,6 +3017,8 @@ target "php74-apache-node24" {
 # thecodingmachine/php:7.4-v5-apache-node22
 target "php74-apache-node22" {
   inherits = ["default"]
+  cache-from = cache_from("php74-apache-node22")
+  cache-to = cache_to("php74-apache-node22")
   tags = tag("7.4", "apache-node22")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -2694,6 +3035,8 @@ target "php74-apache-node22" {
 # thecodingmachine/php:7.4-v5-apache-node20
 target "php74-apache-node20" {
   inherits = ["default"]
+  cache-from = cache_from("php74-apache-node20")
+  cache-to = cache_to("php74-apache-node20")
   tags = tag("7.4", "apache-node20")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -2710,6 +3053,8 @@ target "php74-apache-node20" {
 # thecodingmachine/php:7.4-v5-apache-node18
 target "php74-apache-node18" {
   inherits = ["default"]
+  cache-from = cache_from("php74-apache-node18")
+  cache-to = cache_to("php74-apache-node18")
   tags = tag("7.4", "apache-node18")
   dockerfile = "Dockerfile.apache.node"
   args = {
@@ -2726,6 +3071,8 @@ target "php74-apache-node18" {
 # thecodingmachine/php:7.4-v5-slim-fpm
 target "php74-slim-fpm" {
   inherits = ["default"]
+  cache-from = cache_from("php74-slim-fpm")
+  cache-to = cache_to("php74-slim-fpm")
   tags = tag("7.4", "slim-fpm")
   dockerfile = "Dockerfile.slim.fpm"
   args = {
@@ -2739,6 +3086,8 @@ target "php74-slim-fpm" {
 # The slim image of the variant with the extensions (not published)
 target "php74-slim-fpm-with-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php74-slim-fpm-with-extensions")
+  cache-to = cache_to("php74-slim-fpm-with-extensions")
   dockerfile = "Dockerfile.slim.fpm"
   args = {
     VARIANT = "fpm"
@@ -2752,6 +3101,8 @@ target "php74-slim-fpm-with-extensions" {
 # thecodingmachine/php:7.4-v5-fpm
 target "php74-fpm" {
   inherits = ["default"]
+  cache-from = cache_from("php74-fpm")
+  cache-to = cache_to("php74-fpm")
   tags = tag("7.4", "fpm")
   dockerfile = "Dockerfile.fpm"
   args = {
@@ -2765,6 +3116,8 @@ target "php74-fpm" {
 # thecodingmachine/php:7.4-v5-fpm-node26
 target "php74-fpm-node26" {
   inherits = ["default"]
+  cache-from = cache_from("php74-fpm-node26")
+  cache-to = cache_to("php74-fpm-node26")
   tags = tag("7.4", "fpm-node26")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -2781,6 +3134,8 @@ target "php74-fpm-node26" {
 # thecodingmachine/php:7.4-v5-fpm-node24
 target "php74-fpm-node24" {
   inherits = ["default"]
+  cache-from = cache_from("php74-fpm-node24")
+  cache-to = cache_to("php74-fpm-node24")
   tags = tag("7.4", "fpm-node24")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -2797,6 +3152,8 @@ target "php74-fpm-node24" {
 # thecodingmachine/php:7.4-v5-fpm-node22
 target "php74-fpm-node22" {
   inherits = ["default"]
+  cache-from = cache_from("php74-fpm-node22")
+  cache-to = cache_to("php74-fpm-node22")
   tags = tag("7.4", "fpm-node22")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -2813,6 +3170,8 @@ target "php74-fpm-node22" {
 # thecodingmachine/php:7.4-v5-fpm-node20
 target "php74-fpm-node20" {
   inherits = ["default"]
+  cache-from = cache_from("php74-fpm-node20")
+  cache-to = cache_to("php74-fpm-node20")
   tags = tag("7.4", "fpm-node20")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -2829,6 +3188,8 @@ target "php74-fpm-node20" {
 # thecodingmachine/php:7.4-v5-fpm-node18
 target "php74-fpm-node18" {
   inherits = ["default"]
+  cache-from = cache_from("php74-fpm-node18")
+  cache-to = cache_to("php74-fpm-node18")
   tags = tag("7.4", "fpm-node18")
   dockerfile = "Dockerfile.fpm.node"
   args = {
@@ -2845,6 +3206,8 @@ target "php74-fpm-node18" {
 # thecodingmachine/php:7.4-v5-slim-cli
 target "php74-slim-cli" {
   inherits = ["default"]
+  cache-from = cache_from("php74-slim-cli")
+  cache-to = cache_to("php74-slim-cli")
   tags = tag("7.4", "slim-cli")
   dockerfile = "Dockerfile.slim.cli"
   args = {
@@ -2858,6 +3221,8 @@ target "php74-slim-cli" {
 # The slim image of the variant with the extensions (not published)
 target "php74-slim-cli-with-extensions" {
   inherits = ["default"]
+  cache-from = cache_from("php74-slim-cli-with-extensions")
+  cache-to = cache_to("php74-slim-cli-with-extensions")
   dockerfile = "Dockerfile.slim.cli"
   args = {
     VARIANT = "cli"
@@ -2871,6 +3236,8 @@ target "php74-slim-cli-with-extensions" {
 # thecodingmachine/php:7.4-v5-cli
 target "php74-cli" {
   inherits = ["default"]
+  cache-from = cache_from("php74-cli")
+  cache-to = cache_to("php74-cli")
   tags = tag("7.4", "cli")
   dockerfile = "Dockerfile.cli"
   args = {
@@ -2884,6 +3251,8 @@ target "php74-cli" {
 # thecodingmachine/php:7.4-v5-cli-node26
 target "php74-cli-node26" {
   inherits = ["default"]
+  cache-from = cache_from("php74-cli-node26")
+  cache-to = cache_to("php74-cli-node26")
   tags = tag("7.4", "cli-node26")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -2900,6 +3269,8 @@ target "php74-cli-node26" {
 # thecodingmachine/php:7.4-v5-cli-node24
 target "php74-cli-node24" {
   inherits = ["default"]
+  cache-from = cache_from("php74-cli-node24")
+  cache-to = cache_to("php74-cli-node24")
   tags = tag("7.4", "cli-node24")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -2916,6 +3287,8 @@ target "php74-cli-node24" {
 # thecodingmachine/php:7.4-v5-cli-node22
 target "php74-cli-node22" {
   inherits = ["default"]
+  cache-from = cache_from("php74-cli-node22")
+  cache-to = cache_to("php74-cli-node22")
   tags = tag("7.4", "cli-node22")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -2932,6 +3305,8 @@ target "php74-cli-node22" {
 # thecodingmachine/php:7.4-v5-cli-node20
 target "php74-cli-node20" {
   inherits = ["default"]
+  cache-from = cache_from("php74-cli-node20")
+  cache-to = cache_to("php74-cli-node20")
   tags = tag("7.4", "cli-node20")
   dockerfile = "Dockerfile.cli.node"
   args = {
@@ -2948,6 +3323,8 @@ target "php74-cli-node20" {
 # thecodingmachine/php:7.4-v5-cli-node18
 target "php74-cli-node18" {
   inherits = ["default"]
+  cache-from = cache_from("php74-cli-node18")
+  cache-to = cache_to("php74-cli-node18")
   tags = tag("7.4", "cli-node18")
   dockerfile = "Dockerfile.cli.node"
   args = {
