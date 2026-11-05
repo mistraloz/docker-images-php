@@ -3,6 +3,9 @@
 
 ### Minor changes
 
+* **2026-11-05**
+  * Apache `mod_cgid` (`APACHE_EXTENSION_CGID=1`) starts in the *slim-apache* image and with the built-in Apache of the *fpm* variant: its socket directory was missing
+
 * **2026-11-03**
   * The `php` command is about 20 ms faster on each call: it detects the changes of the `PHP_*` environment variables without starting PHP a first time. The configuration is now also regenerated when a `PHP_*` variable is removed
 
