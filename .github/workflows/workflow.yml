@@ -10,6 +10,11 @@ on:
   schedule:
     - cron: '42 3 * * 0'
   workflow_dispatch:
+    inputs:
+      full_tests:
+        description: 'Run every test file on every variant and PHP version (see tests-suite/TESTS.md)'
+        type: boolean
+        default: false
 
 jobs:
   build:
@@ -59,6 +64,7 @@ jobs:
           BRANCH="v5" \
           PLATFORM="linux/${{ matrix.builder.arch }}" \
           VARIANTS="apache cli fpm" \
+          TEST_SCOPE="${{ inputs.full_tests && 'full' || 'reduced' }}" \
           NODE_VERSIONS="$(docker buildx bake --print --progress=quiet php${PHP_VERSION//.} | jq -r '[.target[].args.NODE_VERSION // empty] | unique | join(" ")')" \
           ./tests-suite/run_tests.sh
       - name: Publish specific arch version

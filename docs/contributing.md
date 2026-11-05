@@ -46,6 +46,9 @@ default, with one log per test file):
 $ PHP_VERSION=8.4 BRANCH=v5 VARIANTS="apache cli fpm" NODE_VERSIONS="22 24 26" ./tests-suite/run_tests.sh
 ```
 
+With `TEST_SCOPE=reduced`, as the CI does, each test file only runs where its result can differ: see
+[the tests run by the CI](../tests-suite/TESTS.md). Add a new test file to its table.
+
 The variables of [`tests-suite/config`](../tests-suite/config) select the images to test, e.g. `TAG_PREFIX` (images
 built with `TAG_PREFIX=mytest- docker buildx bake ...`) or `PLATFORM` (e.g. `linux/arm64` with QEMU).
 
