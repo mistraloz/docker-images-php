@@ -127,7 +127,7 @@ if [ -n "${ISSUE:-}" ] && [ "${DRY_RUN:-0}" != 1 ]; then
 
   # Digest: a new comment notifies the subscribers, the previous digests are hidden
   if [ "${KEY}" != "${LAST_KEY}" ] && { [ $((NOW - LAST_DIGEST)) -ge "${DIGEST_INTERVAL}" ] || [ "${DONE}" = 1 ]; }; then
-    CHANGED=$(diff <(echo "${LAST_KEY}") <(echo "${KEY}") | awk -F'|' '/^> \| [0-9]/ {gsub(/ /, "", $2); print $2}' | sort -uVr | paste -sd, - | sed 's/,/, /g')
+    CHANGED=$({ diff <(echo "${LAST_KEY}") <(echo "${KEY}") || true; } | awk -F'|' '/^> \| [0-9]/ {gsub(/ /, "", $2); print $2}' | sort -uVr | paste -sd, - | sed 's/,/, /g')
     for ID in $(gh api "repos/${GITHUB_REPOSITORY}/issues/${ISSUE}/comments" --paginate \
         --jq '.[] | select(.user.login == "github-actions[bot]" and (.body | contains("<!-- php-watch:digest -->"))) | .node_id'); do
       gh api graphql -f query='mutation($id: ID!) { minimizeComment(input: {subjectId: $id, classifier: OUTDATED}) { clientMutationId } }' \
@@ -136,6 +136,7 @@ if [ -n "${ISSUE:-}" ] && [ "${DRY_RUN:-0}" != 1 ]; then
     {
       echo "<!-- php-watch:digest -->"
       if [ "${DONE}" = 1 ]; then echo "**$(date -u '+%Y-%m-%d %H:%M') UTC: all the images are up to date**"
+      elif [ -z "${LAST_KEY}" ]; then echo "**$(date -u '+%Y-%m-%d %H:%M') UTC: start of the watch**"
       else echo "**$(date -u '+%Y-%m-%d %H:%M') UTC: PHP ${CHANGED:-?} changed**"; fi
       echo
       echo "${TABLE}"
